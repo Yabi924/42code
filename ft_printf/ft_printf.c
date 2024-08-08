@@ -6,7 +6,7 @@
 /*   By: yyan-bin <yyan-bin@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 16:48:49 by yyan-bin          #+#    #+#             */
-/*   Updated: 2024/07/21 17:45:54 by yyan-bin         ###   ########.fr       */
+/*   Updated: 2024/08/08 18:09:00 by yyan-bin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	check(const char c, va_list arg)
 	if (c == 'c')
 		len = printc(va_arg(arg, int));
 	else if (c == 'p')
-	    len += printp(va_arg(arg, void *));
+		len = printp(va_arg(arg, void *));
 	else if (c == 's')
 		len = prints(va_arg(arg, char *));
 	else if (c == 'd' || c == 'i')

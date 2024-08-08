@@ -6,7 +6,7 @@
 /*   By: yyan-bin <yyan-bin@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 16:51:02 by yyan-bin          #+#    #+#             */
-/*   Updated: 2024/07/21 17:20:49 by yyan-bin         ###   ########.fr       */
+/*   Updated: 2024/08/08 18:06:13 by yyan-bin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static unsigned int	countdigit(unsigned int i)
 
 static void	putint(unsigned int i)
 {
-	char *digit;
+	char	*digit;
 
 	digit = "0123456789";
 	if (i >= 10)

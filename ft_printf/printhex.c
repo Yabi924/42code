@@ -6,7 +6,7 @@
 /*   By: yyan-bin <yyan-bin@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 16:50:46 by yyan-bin          #+#    #+#             */
-/*   Updated: 2024/07/21 17:37:46 by yyan-bin         ###   ########.fr       */
+/*   Updated: 2024/08/08 18:11:31 by yyan-bin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ int	count_hex(unsigned int i)
 
 static void	put_hex(unsigned int i, const char c)
 {
-	char *lower_hex;
-	char *upper_hex;
+	char	*lower_hex;
+	char	*upper_hex;
 
 	lower_hex = "0123456789abcdef";
 	upper_hex = "0123456789ABCDEF";
@@ -39,14 +39,14 @@ static void	put_hex(unsigned int i, const char c)
 		put_hex(i / 16, c);
 		if (c == 'x')
 			write(1, &lower_hex[i % 16], 1);
-		else 
+		else
 			write(1, &upper_hex[i % 16], 1);
 	}
 	else if (i < 16)
 	{
 		if (c == 'x')
 			write(1, &lower_hex[i % 16], 1);
-		else 
+		else
 			write(1, &upper_hex[i % 16], 1);
 	}
 }
