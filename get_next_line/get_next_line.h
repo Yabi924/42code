@@ -7,7 +7,7 @@
 # include <stdlib.h>
 # include <fcntl.h>
 
-#ifndef BUFFER_SIZE
+# ifndef BUFFER_SIZE
 # define BUFFER_SIZE 42
 # endif
 
