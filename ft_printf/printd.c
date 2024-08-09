@@ -47,11 +47,6 @@ int	printd(int d)
 		write(1, "-2147483648", 11);
 		return (len);
 	}
-	if (d >= 2147483647)
-	{
-		write(1, "2147483647", 10);
-		return (len);
-	}
 	if (d < 0)
 	{
 		d *= -1;

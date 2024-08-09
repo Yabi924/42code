@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int	count_phex(uintptr_t ptr)
+static int	count_phex(uintptr_t ptr)
 {
 	int	len;
 
@@ -27,7 +27,7 @@ int	count_phex(uintptr_t ptr)
 	return (len);
 }
 
-int	printphex(uintptr_t ptr)
+static int	printphex(uintptr_t ptr)
 {
 	char	*hex;
 	int		len;

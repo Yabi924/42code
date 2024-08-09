@@ -13,7 +13,7 @@
 #include "ft_printf.h"
 
 // %c %p %s %d %i %u %x %X %%
-int	check(const char c, va_list arg)
+static int	check(const char c, va_list arg)
 {
 	int	len;
 

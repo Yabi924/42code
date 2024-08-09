@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int	count_hex(unsigned int i)
+static int	count_hex(unsigned int i)
 {
 	int	len;
 
@@ -35,20 +35,11 @@ static void	put_hex(unsigned int i, const char c)
 	lower_hex = "0123456789abcdef";
 	upper_hex = "0123456789ABCDEF";
 	if (i >= 16)
-	{
 		put_hex(i / 16, c);
-		if (c == 'x')
-			write(1, &lower_hex[i % 16], 1);
-		else
-			write(1, &upper_hex[i % 16], 1);
-	}
-	else if (i < 16)
-	{
-		if (c == 'x')
-			write(1, &lower_hex[i % 16], 1);
-		else
-			write(1, &upper_hex[i % 16], 1);
-	}
+	if (c == 'x')
+		write(1, &lower_hex[i % 16], 1);
+	else
+		write(1, &upper_hex[i % 16], 1);
 }
 
 int	printhex(unsigned int i, const char c)
