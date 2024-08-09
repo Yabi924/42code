@@ -15,12 +15,17 @@
 char    *get_the_line(int fd, char *readtemp)
 {
     char    *newline;
+    int i;
 
-    if (!readtemp)
+    if (fd < 0 || !readtemp)
         return NULL;
     while (fd)
     {
-        read(fd, newline, BUFFER_SIZE);
+        i = read(fd, newline, BUFFER_SIZE);
+        if (i == -1)
+        {
+            free(readtemp);
+        }
         readtemp = ft_strjoin(readtemp, newline);
         if (ft_strchr(readtemp, '\n') == TRUE)
             break ;
@@ -29,18 +34,17 @@ char    *get_the_line(int fd, char *readtemp)
     return (readtemp);
 }
 
-char    *gotrueline(int fd, char *save)
+char    *line(char *save)
 {
     char *trueline;
 
-    
 }
 
 char *get_nex_line(int fd)
 {
     static char *save;
 
-    if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, save, BUFFER_SIZE) == 0)
+    if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, save, 0) == 0)
         return (NULL);
     if (!save)
         save = ft_strdup("");
