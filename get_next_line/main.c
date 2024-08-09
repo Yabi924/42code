@@ -1,6 +1,7 @@
-#include "get_next_line"
+#include "get_next_line.h"
 
 int main()
 {
-    open()
+    // int fd = open("");
+    return 0;
 }
