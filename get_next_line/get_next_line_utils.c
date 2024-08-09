@@ -1,4 +1,4 @@
-#include "get_nex_line"
+#include "get_next_line"
 
 size_t	ft_strlen(const char *s)
 {
