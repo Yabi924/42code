@@ -15,29 +15,34 @@
 char    *get_the_line(int fd, char *readtemp)
 {
     char    *newline;
-    int i;
 
-    if (fd < 0 || !readtemp)
+    if (fd < 0 || !readtemp || BUFFER_SIZE <= 0)
         return NULL;
     while (fd)
     {
-        i = read(fd, newline, BUFFER_SIZE);
-        if (i == -1)
+        if (read(fd, newline, BUFFER_SIZE) == -1)
         {
             free(readtemp);
+            return (NULL);
         }
         readtemp = ft_strjoin(readtemp, newline);
         if (ft_strchr(readtemp, '\n') == TRUE)
             break ;
     }
-    free(newline);
     return (readtemp);
 }
 
 char    *line(char *save)
 {
-    char *trueline;
+    char    *trueline;
+    int i;
 
+    i = 0;
+    if (!save)
+        return (NULL);
+    while (save[i] && save[i] != '\n')
+        i++;
+    trueline = ft_substr(trueline, )
 }
 
 char *get_nex_line(int fd)
