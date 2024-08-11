@@ -22,6 +22,26 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
+size_t	ft_strlcpy(char *dest, const char *src, size_t dstsize)
+{
+	size_t	i;
+	size_t	src_len;
+
+	i = 0;
+	src_len = 0;
+	while (src[src_len])
+		src_len++;
+	if (dstsize == 0)
+		return (src_len);
+	while (src[i] != '\0' && i < dstsize - 1)
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (src_len);
+}
+
 int	ft_strchr(const char *s, int c)
 {
 	while (*s)
@@ -74,4 +94,34 @@ char	*ft_strdup(const char *s1)
 	}
 	str[j] = '\0';
 	return ((char *)str);
+}
+
+static int	count(const char *s, unsigned int start, size_t len)
+{
+	int	actual_len;
+
+	if (!s)
+		return (0);
+	if (ft_strlen(s) - start < len)
+		actual_len = ft_strlen(s) - start;
+	else
+		actual_len = len;
+	return (actual_len);
+}
+
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	int		actual_len;
+	char	*str;
+
+	if (!s)
+		return (NULL);
+	if (ft_strlen(s) <= start)
+		return (ft_strdup(""));
+	actual_len = count(s, start, len);
+	str = (char *)malloc(sizeof(char) * (actual_len + 1));
+	if (!str)
+		return (NULL);
+	ft_strlcpy(str, s + start, actual_len + 1);
+	return (str);
 }

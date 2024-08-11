@@ -20,21 +20,22 @@ char    *get_the_line(int fd, char *readtemp)
         return NULL;
     while (fd)
     {
+        if (ft_strchr(readtemp, '\n') == TRUE)
+            break ;
         if (read(fd, newline, BUFFER_SIZE) == -1)
         {
             free(readtemp);
             return (NULL);
         }
         readtemp = ft_strjoin(readtemp, newline);
-        if (ft_strchr(readtemp, '\n') == TRUE)
-            break ;
+        
     }
     return (readtemp);
 }
 
 char    *line(char *save)
 {
-    char    *trueline;
+    char    *realline;
     int i;
 
     i = 0;
@@ -42,16 +43,36 @@ char    *line(char *save)
         return (NULL);
     while (save[i] && save[i] != '\n')
         i++;
-    trueline = ft_substr(trueline, )
+    realline = ft_substr(realline, 0, i);
+    if (!realline)
+        return (NULL);
+    return (realline);
+}
+
+char *saving(char *save)
+{
+    int i;
+    char *remain;
+
+    i = 0;
+    while (save[i] && save[i] != '\n')
+        i++;
+    remain = ft_substr(save, i, ft_strlen(save) - i);
+    free(save);
+    return (remain);
 }
 
 char *get_nex_line(int fd)
 {
     static char *save;
+    char *realline;
 
     if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, save, 0) == 0)
         return (NULL);
     if (!save)
         save = ft_strdup("");
     save = get_the_line(fd, save);
+    realline = line(save);
+    save = saving(save);
+    return (realline);
 }
