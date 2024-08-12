@@ -53,24 +53,25 @@ int	ft_strchr(const char *s, int c)
 	return (FALSE);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	size_t	ttllen;
 	char	*str;
-	char	*ptr;
 
+	if (!s1)
+		s1 = ft_strdup(s1);
 	if (!s1 || !s2)
 		return (NULL);
 	ttllen = ft_strlen(s1) + ft_strlen(s2);
 	str = (char *)malloc(ttllen + 1);
 	if (!str)
 		return (NULL);
-	ptr = str;
 	while (*s1)
-		*ptr++ = *s1++;
+		*str++ = *s1++;
 	while (*s2)
-		*ptr++ = *s2++;
-	*ptr = '\0';
+		*str++ = *s2++;
+	*str = '\0';
+	free(s1);
 	return (str);
 }
 

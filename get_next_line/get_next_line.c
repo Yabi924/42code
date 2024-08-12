@@ -12,67 +12,38 @@
 
 #include "get_next_line.h"
 
-char    *get_the_line(int fd, char *readtemp)
+char *readline(int fd, char *save)
 {
-    char    *newline;
+    char *temp;
+    int readd;
 
-    if (fd < 0 || !readtemp || BUFFER_SIZE <= 0)
-        return NULL;
-    while (fd)
+    temp = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
+    if (temp)
+        return (NULL);
+    temp[BUFFER_SIZE + 1] = '\0';
+    readd = 1;
+    while (ft_strchr(save, '\n') == TRUE && readd)
     {
-        if (ft_strchr(readtemp, '\n') == TRUE)
-            break ;
-        if (read(fd, newline, BUFFER_SIZE) == -1)
+        readd = read(fd, temp, BUFFER_SIZE);
+        if (readd == -1)
         {
-            free(readtemp);
+            free(temp);
             return (NULL);
         }
-        readtemp = ft_strjoin(readtemp, newline);
-        
+        save = ft_strjoin(save, temp);
     }
-    return (readtemp);
+    return (save);
 }
 
-char    *line(char *save)
-{
-    char    *realline;
-    int i;
 
-    i = 0;
-    if (!save)
-        return (NULL);
-    while (save[i] && save[i] != '\n')
-        i++;
-    realline = ft_substr(realline, 0, i);
-    if (!realline)
-        return (NULL);
-    return (realline);
-}
-
-char *saving(char *save)
-{
-    int i;
-    char *remain;
-
-    i = 0;
-    while (save[i] && save[i] != '\n')
-        i++;
-    remain = ft_substr(save, i, ft_strlen(save) - i);
-    free(save);
-    return (remain);
-}
-
-char *get_nex_line(int fd)
+char *get_next_line(int fd)
 {
     static char *save;
-    char *realline;
+    char *line;
 
-    if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, save, 0) == 0)
+    if (BUFFER_SIZE <= 0 || fd < 0)
         return (NULL);
-    if (!save)
-        save = ft_strdup("");
-    save = get_the_line(fd, save);
-    realline = line(save);
-    save = saving(save);
-    return (realline);
+    save = readline(fd, save);
+
+    return (line);
 }

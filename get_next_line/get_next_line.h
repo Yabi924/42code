@@ -19,18 +19,20 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <stdlib.h>
+# include <stdio.h>
 
 # ifndef BUFFER_SIZE
-# define BUFFER_SIZE 42
+# define BUFFER_SIZE 1
 # endif
 
 # define TRUE 1
 # define FALSE 0
 
 char    *get_next_line(int fd);
+char    *readline(int fd, char *save);
 size_t	ft_strlen(const char *s);
-int ft_strchr(const char *s, int c);
-char	*ft_strjoin(char const *s1, char const *s2);
+int     ft_strchr(const char *s, int c);
+char	*ft_strjoin(char *s1, char *s2);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strdup(const char *s1);
 
