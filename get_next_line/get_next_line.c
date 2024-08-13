@@ -18,23 +18,70 @@ char *readline(int fd, char *save)
     int readd;
 
     temp = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
-    if (temp)
+    if (!temp)
         return (NULL);
-    temp[BUFFER_SIZE + 1] = '\0';
     readd = 1;
-    while (ft_strchr(save, '\n') == TRUE && readd)
-    {
+    while (!ft_strchr(save, '\n') && readd)
+    { 
         readd = read(fd, temp, BUFFER_SIZE);
         if (readd == -1)
         {
             free(temp);
             return (NULL);
         }
+        temp[readd] = '\0';
         save = ft_strjoin(save, temp);
     }
     return (save);
 }
 
+char    *cuting(char *save)
+{
+    if (!save)
+        return (NULL);
+    char    *line;
+    int i;
+    int j;
+
+    i = 0;
+    j = 0;    
+    while (save[i] && save[i] != '\n')
+        i++;
+    line = (char *)malloc(sizeof(char) * (i + 1));
+    if (!line)
+        return (NULL);
+    while (j < (i + 1))
+    {
+        line[j] = save[j];
+        j++;
+    }
+    line[j] = '\0';
+    return (line);
+}
+
+char *afterline(char *save)
+{
+    char *afline;
+    int ttl;
+    int i;
+    int j;
+
+    ttl = ft_strlen(save);
+    i = 0;
+    j = 0;
+    while (save[i] || save[i] != '\n')
+        i++;
+    afline = (char *)malloc(sizeof(char) * (ttl - i + 1));
+    if (!afline)
+        return (NULL);
+    while (save[i])
+    {
+        afline[j++] = save[i++];
+    }
+    afline = '\0';
+    // free(save);
+    return (afline);
+}
 
 char *get_next_line(int fd)
 {
@@ -44,6 +91,7 @@ char *get_next_line(int fd)
     if (BUFFER_SIZE <= 0 || fd < 0)
         return (NULL);
     save = readline(fd, save);
-
+    line = cuting(save);
+    save = afterline(save);
     return (line);
 }
