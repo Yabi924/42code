@@ -22,11 +22,8 @@
 # include <stdio.h>
 
 # ifndef BUFFER_SIZE
-# define BUFFER_SIZE 10
+# define BUFFER_SIZE 2
 # endif
-
-# define TRUE 1
-# define FALSE 0
 
 char    *get_next_line(int fd);
 char    *cuting(char *save);

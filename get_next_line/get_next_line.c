@@ -12,7 +12,7 @@
 
 #include "get_next_line.h"
 
-char *readline(int fd, char *save)
+char    *readline(int fd, char *save)
 {
     char *temp;
     int readd;
@@ -44,7 +44,7 @@ char    *cuting(char *save)
     int j;
 
     i = 0;
-    j = 0;    
+    j = 0;
     while (save[i] && save[i] != '\n')
         i++;
     line = (char *)malloc(sizeof(char) * (i + 1));
@@ -59,31 +59,30 @@ char    *cuting(char *save)
     return (line);
 }
 
-char *afterline(char *save)
+char    *afterline(char *save)
 {
+    if (!save)
+        return (NULL);
     char *afline;
-    int ttl;
     int i;
     int j;
 
-    ttl = ft_strlen(save);
     i = 0;
     j = 0;
-    while (save[i] || save[i] != '\n')
+    while (save[i] && save[i] != '\n')
         i++;
-    afline = (char *)malloc(sizeof(char) * (ttl - i + 1));
+    afline = (char *)malloc(sizeof(char) * (ft_strlen(save) - (i + 1)));
     if (!afline)
         return (NULL);
-    while (save[i])
-    {
-        afline[j++] = save[i++];
-    }
-    afline = '\0';
-    // free(save);
+    while (save[++i])
+        afline[j++] = save[i];
+    afline[j] = '\0';
+    free(save);
     return (afline);
 }
 
-char *get_next_line(int fd)
+//剩下文件end的时候检查出并返回NULL;
+char    *get_next_line(int fd)
 {
     static char *save;
     char *line;

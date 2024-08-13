@@ -1,8 +1,16 @@
 #include "get_next_line.h"
 
+char *ft_gnl(int fd)
+{
+    char *line = get_next_line(fd);
+    if (!line)
+        return NULL;
+    return line;
+}
+
 int main()
 {
-    int fd = open("/home/42code/test.txt", O_RDWR);
+    int fd = open("/home/42code/test.txt", O_RDONLY);
     // int fd = open("/Users/yyan-bin/Desktop/42code/test.txt", O_RDWR);
     // printf("main-fd:%d\n", fd);
     // char *str = ft_strdup("");
@@ -10,23 +18,37 @@ int main()
     // printf("main-read:%d\n", readd);
     // printf("%s\n", str);
 
-    char *line = get_next_line(fd);
-    if (!line)
-        printf("line is NULL\n");
-    else
-        printf("main:%s\n", line);  
+    int i = 0;
+    while (i < 10)
+    {
+        char *line = ft_gnl(fd);
+        if (line)
+            printf("main-%d:%s", i, line);
+        else
+        {
+            printf("NULL\n");
+            break ;    
+        }
+        i++;
+    }
 
-    line = get_next_line(fd);
-    if (!line)
-        printf("line is NULL\n");
-    else
-        printf("main:%s\n", line); 
+    // char *line = get_next_line(fd);
+    // if (!line)
+    //     printf("line is NULL\n");
+    // else
+    //     printf("main-1:%s\n", line);  
 
-    line = get_next_line(fd);
-    if (!line)
-        printf("line is NULL\n");
-    else
-        printf("main:%s\n", line); 
+    // line = get_next_line(fd);
+    // if (!line)
+    //     printf("line is NULL\n");
+    // else
+    //     printf("main-2:%s\n", line); 
+
+    // line = get_next_line(fd);
+    // if (!line)
+    //     printf("line is NULL\n");
+    // else
+    //     printf("main-3:%s\n", line); 
      
     return 0;
 }
