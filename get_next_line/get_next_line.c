@@ -21,8 +21,8 @@ char    *readline(int fd, char *save)
     if (!temp)
         return (NULL);
     readd = 1;
-    while (!ft_strchr(save, '\n') && readd)
-    { 
+    while (ft_strchr(save, '\n') == FALSE && readd)
+    {
         readd = read(fd, temp, BUFFER_SIZE);
         if (readd == -1)
         {
@@ -32,6 +32,9 @@ char    *readline(int fd, char *save)
         temp[readd] = '\0';
         save = ft_strjoin(save, temp);
     }
+    if (!ft_strlen(save))
+        save = NULL;
+    free(temp);
     return (save);
 }
 

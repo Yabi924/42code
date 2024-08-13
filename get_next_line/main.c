@@ -1,13 +1,5 @@
 #include "get_next_line.h"
 
-char *ft_gnl(int fd)
-{
-    char *line = get_next_line(fd);
-    if (!line)
-        return NULL;
-    return line;
-}
-
 int main()
 {
     int fd = open("/home/42code/test.txt", O_RDONLY);
@@ -19,15 +11,17 @@ int main()
     // printf("%s\n", str);
 
     int i = 0;
-    while (i < 10)
+    while (1)
     {
-        char *line = ft_gnl(fd);
+        // char *line = ft_gnl(fd);
+        char *line = get_next_line(fd);
         if (line)
-            printf("main-%d:%s", i, line);
+            printf("main-%d:%s\n", i, line);
         else
         {
             printf("NULL\n");
-            break ;    
+            free(line);
+            break ;
         }
         i++;
     }

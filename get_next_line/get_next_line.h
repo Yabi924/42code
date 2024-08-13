@@ -25,6 +25,9 @@
 # define BUFFER_SIZE 2
 # endif
 
+# define TRUE 1
+# define FALSE 0
+
 char    *get_next_line(int fd);
 char    *cuting(char *save);
 char    *readline(int fd, char *save);
