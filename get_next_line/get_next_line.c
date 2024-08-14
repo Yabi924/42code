@@ -12,101 +12,105 @@
 
 #include "get_next_line.h"
 
-char    *readline(int fd, char *save)
+//read .txt to string,if the string got '\n',return the string 
+char	*readline(int fd, char *save)
 {
-    char *temp;
-    int readd;
+	char	*temp;
+	int		readd;
 
-    temp = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
-    if (!temp)
-        return (NULL);
-    readd = 1;
-    while (ft_strchr(save, '\n') == FALSE && readd)
-    {
-        readd = read(fd, temp, BUFFER_SIZE);
-        if (readd == -1)
-        {
-            free(temp);
-            return (NULL);
-        }
-        temp[readd] = '\0';
-        save = ft_strjoin(save, temp);
-    }
-    if (!ft_strlen(save))
-        save = NULL;
-    free(temp);
-    return (save);
+	temp = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
+	if (!temp)
+		return (NULL);
+	readd = 1;
+	while (ft_strchr(save) == FALSE && readd)
+	{
+		readd = read(fd, temp, BUFFER_SIZE);
+		if (readd == -1)
+		{
+			free(temp);
+			return (NULL);
+		}
+		temp[readd] = '\0';
+		save = ft_strjoin(save, temp);
+	}
+	if (!ft_strlen(save))
+		save = NULL;
+	free(temp);
+	return (save);
 }
 
-char    *cuting(char *save)
+//get the first '\n' and return the string
+char	*cuting(char *save)
 {
-    if (!save)
-        return (NULL);
-    char    *line;
-    int i;
-    int j;
+	char	*line;
+	int		i;
+	int		j;
 
-    i = 0;
-    j = 0;
-    while (save[i] && save[i] != '\n')
-        i++;
-    line = (char *)malloc(sizeof(char) * (i + 2));
-    if (!line)
-        return (NULL);
-    while (j < (i + 1))
-    {
-        line[j] = save[j];
-        j++;
-    }
-    line[j] = '\0';
-    return (line);
+	i = 0;
+	j = 0;
+	if (!save)
+		return (NULL);
+	while (save[i] && save[i] != '\n')
+		i++;
+	line = (char *)malloc(sizeof(char) * (i + 2));
+	if (!line)
+		return (NULL);
+	while (j < (i + 1))
+	{
+		line[j] = save[j];
+		j++;
+	}
+	line[j] = '\0';
+	return (line);
 }
 
-char    *afterline(char *save)
+//cut first line '\n' and return remainder string
+char	*afterline(char *save)
 {
-    if (!save)
-        return (NULL);
-    char *afline;
-    int i;
-    int j;
+	char	*afline;
+	int		i;
+	int		j;
 
-    i = 0;
-    j = 0;
-    while (save[i] && save[i] != '\n')
-        i++;
-    if (!save[i])
+	i = 0;
+	j = 0;
+	if (!save)
+		return (NULL);
+	while (save[i] && save[i] != '\n')
+		i++;
+	if (!save[i])
 	{
 		free(save);
 		return (NULL);
 	}
-    afline = (char *)malloc(sizeof(char) * (ft_strlen(save) - i));
-    if (!afline)
-        return (NULL);
-    while (save[++i])
-        afline[j++] = save[i];
-    afline[j] = '\0';
-    free(save);
-    return (afline);
+	afline = (char *)malloc(sizeof(char) * (ft_strlen(save) - i));
+	if (!afline)
+		return (NULL);
+	while (save[++i])
+		afline[j++] = save[i];
+	afline[j] = '\0';
+	free(save);
+	return (afline);
 }
 
-char    *get_next_line(int fd)
+//read--take first line--cut first line and save remainder
+char	*get_next_line(int fd)
 {
-    static char *save;
-    char *line;
+	static char	*save;
+	char		*line;
 
-    if (BUFFER_SIZE <= 0 || fd < 0)
-        return (NULL);
-    save = readline(fd, save);
-    line = cuting(save);
-    save = afterline(save);
-    return (line);
+	if (BUFFER_SIZE <= 0 || fd < 0)
+		return (NULL);
+	save = readline(fd, save);
+	line = cuting(save);
+	save = afterline(save);
+	return (line);
 }
 
 /*
 int main()
 {
     int fd = open("test.txt", O_CREAT | O_RDWR);
-    char *s = (char *)malloc(sizeof(char) * 10);
+    char    *s = (char *)malloc(sizeof(char) * 10);
     int readd = read(fd, s, 10);
     if (readd == 0)
     {

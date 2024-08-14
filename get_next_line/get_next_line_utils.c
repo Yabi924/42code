@@ -22,13 +22,13 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-int	ft_strchr(const char *s, int c)
+int	ft_strchr(const char *s)
 {
 	if (!s)
 		return (FALSE);
 	while (*s)
 	{
-		if (*s == c)
+		if (*s == '\n')
 			return (TRUE);
 		s++;
 	}
@@ -40,7 +40,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	size_t	ttllen;
 	char	*str;
 	char	*ptr;
-	int i;
+	int		i;
 
 	i = 0;
 	if (!s1)
