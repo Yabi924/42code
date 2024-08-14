@@ -50,7 +50,7 @@ char    *cuting(char *save)
     j = 0;
     while (save[i] && save[i] != '\n')
         i++;
-    line = (char *)malloc(sizeof(char) * (i + 1));
+    line = (char *)malloc(sizeof(char) * (i + 2));
     if (!line)
         return (NULL);
     while (j < (i + 1))
@@ -74,7 +74,7 @@ char    *afterline(char *save)
     j = 0;
     while (save[i] && save[i] != '\n')
         i++;
-    afline = (char *)malloc(sizeof(char) * (ft_strlen(save) - (i + 1)));
+    afline = (char *)malloc(sizeof(char) * (ft_strlen(save) - i));
     if (!afline)
         return (NULL);
     while (save[++i])
@@ -84,7 +84,6 @@ char    *afterline(char *save)
     return (afline);
 }
 
-//剩下文件end的时候检查出并返回NULL;
 char    *get_next_line(int fd)
 {
     static char *save;

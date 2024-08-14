@@ -13,7 +13,6 @@ int main()
     int i = 0;
     while (1)
     {
-        // char *line = ft_gnl(fd);
         char *line = get_next_line(fd);
         if (line)
             printf("main-%d:%s\n", i, line);
@@ -25,24 +24,5 @@ int main()
         }
         i++;
     }
-
-    // char *line = get_next_line(fd);
-    // if (!line)
-    //     printf("line is NULL\n");
-    // else
-    //     printf("main-1:%s\n", line);  
-
-    // line = get_next_line(fd);
-    // if (!line)
-    //     printf("line is NULL\n");
-    // else
-    //     printf("main-2:%s\n", line); 
-
-    // line = get_next_line(fd);
-    // if (!line)
-    //     printf("line is NULL\n");
-    // else
-    //     printf("main-3:%s\n", line); 
-     
     return 0;
 }

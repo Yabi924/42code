@@ -15,18 +15,19 @@
 //     return 0;
 // }
 
-// // %p
-// int main()
-// {
-//     int s = 122;
+// %p
+int main()
+{
+    int a = 123;
+    void *s = NULL;
 
-//     int i = ft_printf("my: %p\n", s);
-//     printf("%d\n", i);
-//     int j = printf("ori: %p\n", s);
-//     printf("%d\n", j);
+    //int i = ft_printf("%0i", a);
+    //printf("\n%d\n", i);
+    int j = printf("%010i", a);
+    printf("\n%d\n", j);
 
-//     return 0;
-// }
+    return 0;
+}
 
 // // %s
 // int  main()
@@ -41,20 +42,20 @@
 //     return 0;
 // }
 
-// %d
-int main()
-{
-    // int num = -42;
-    // int num = -2147483648;
-    int num = 2147483647;
+// // %d
+// int main()
+// {
+//     // int num = -42;
+//     // int num = -2147483648;
+//     int num = 2147483647;
 
-    int i = ft_printf("%d\n", num);
-    printf("my:%d\n", i);
-    int j = printf("%d\n", num);
-    printf("ori:%d\n", j);
+//     int i = ft_printf("%d\n", num);
+//     printf("my:%d\n", i);
+//     int j = printf("%d\n", num);
+//     printf("ori:%d\n", j);
 
-    return 0;
-}
+//     return 0;
+// }
 
 // // %i
 // int main()
@@ -119,16 +120,16 @@ int main()
 // // %p
 // int main()
 // {
-//     // int c = 30000;
-//     // int *p;
-//     // p = &c;
+//     int c = 30000;
+//     int *p;
+//     p = &c;
 
 //     void *void_p = NULL;
 
 //     printf("%p\n", void_p);
 
-//     int j = ft_printf("%p\n", void_p);
-//     printf("%d\n", j);
+//     // int j = ft_printf("%p\n", void_p);
+//     // printf("%d\n", j);
 //     // int i = ft_printf("%p\n", p);
 //     // printf("%d\n", i);
 //     // int i1 = ft_printf("%p\n", &c);

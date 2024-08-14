@@ -25,7 +25,7 @@ size_t	ft_strlen(const char *s)
 int	ft_strchr(const char *s, int c)
 {
 	if (!s)
-		return (0);
+		return (FALSE);
 	while (*s)
 	{
 		if (*s == c)

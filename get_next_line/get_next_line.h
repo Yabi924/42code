@@ -22,7 +22,7 @@
 # include <stdio.h>
 
 # ifndef BUFFER_SIZE
-# define BUFFER_SIZE 2
+# define BUFFER_SIZE 100
 # endif
 
 # define TRUE 1
