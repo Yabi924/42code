@@ -74,6 +74,11 @@ char    *afterline(char *save)
     j = 0;
     while (save[i] && save[i] != '\n')
         i++;
+    if (!save[i])
+	{
+		free(save);
+		return (NULL);
+	}
     afline = (char *)malloc(sizeof(char) * (ft_strlen(save) - i));
     if (!afline)
         return (NULL);
@@ -96,3 +101,42 @@ char    *get_next_line(int fd)
     save = afterline(save);
     return (line);
 }
+
+/*
+int main()
+{
+    int fd = open("test.txt", O_CREAT | O_RDWR);
+    char *s = (char *)malloc(sizeof(char) * 10);
+    int readd = read(fd, s, 10);
+    if (readd == 0)
+    {
+        char c = 'a';
+        while (c <= 'z') {
+            if (c == 'e' || c == 'l' || c == 's' || c == 'x')
+                write(fd, "\n", 1);
+            write(fd, &c, 1);
+            c++;
+        }
+    }
+    free(s);
+    close(fd);
+
+    fd = open("/home/42code/get_next_line/test.txt", O_RDONLY);
+    int i = 1;
+    while (i)
+    {
+        char *line = get_next_line(fd);
+        if (line)
+            printf("main-%d:%s\n", i, line);
+        else
+        {
+            printf("NULL\n");
+            free(line);
+            break ;
+        }
+        i++;
+    }
+    close(fd);
+    return 0;
+}
+*/
