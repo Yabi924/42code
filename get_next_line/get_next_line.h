@@ -19,6 +19,7 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include <stdio.h>
+# include <limits.h>
 
 # define TRUE 1
 # define FALSE 0
@@ -33,6 +34,8 @@ char	*readline(int fd, char *save);
 char	*afterline(char *save);
 size_t	ft_strlen(const char *s);
 int		ft_strchr(const char *s);
-char	*ft_strjoin(char *s1, char *s2);
+char	*ft_strjoin(const char *s1, const char *s2);
+void	*ft_calloc(size_t count, size_t size);
+void	*ft_memset(void *b, int c, size_t len);
 
 #endif

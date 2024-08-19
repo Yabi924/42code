@@ -35,31 +35,48 @@ int	ft_strchr(const char *s)
 	return (FALSE);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin(const char *s1, const char *s2)
 {
 	size_t	ttllen;
 	char	*str;
 	char	*ptr;
-	int		i;
 
-	i = 0;
-	if (!s1)
-	{
-		s1 = (char *)malloc(sizeof(char) * 1);
-		s1[0] = '\0';
-	}
-	if (!s1 || !s2)
-		return (NULL);
 	ttllen = ft_strlen(s1) + ft_strlen(s2);
 	str = (char *)malloc(ttllen + 1);
 	if (!str)
 		return (NULL);
 	ptr = str;
-	while (s1[i])
-		*ptr++ = s1[i++];
+	while (*s1)
+		*ptr++ = *s1++;
 	while (*s2)
 		*ptr++ = *s2++;
 	*ptr = '\0';
-	free(s1);
 	return (str);
+}
+
+void	*ft_calloc(size_t count, size_t size)
+{
+	void	*mem;
+
+	if (count > 0 && count > UINT_MAX / size)
+		return (NULL);
+	mem = (void *)malloc(count * size);
+	if (!mem)
+		return (NULL);
+	ft_memset(mem, 0, count * size);
+	return (mem);
+}
+
+void	*ft_memset(void *b, int c, size_t len)
+{
+	unsigned char	*i;
+
+	i = b;
+	while (len != 0)
+	{
+		*i = (unsigned char)c;
+		len--;
+		i++;
+	}
+	return (b);
 }
