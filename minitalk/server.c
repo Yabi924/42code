@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yyan-bin <yyan-bin@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/22 13:11:50 by yyan-bin          #+#    #+#             */
-/*   Updated: 2024/09/22 13:11:52 by yyan-bin         ###   ########.fr       */
+/*   Created: 2024/09/22 13:11:16 by yyan-bin          #+#    #+#             */
+/*   Updated: 2024/09/22 13:11:18 by yyan-bin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "minitalk.h"
 
-# include <unistd.h>
-# include "ft_printf/ft_printf.h"
-# include "libft/libft.h"
-
-#endif
+int main()
+{
+    printf("hi\n");
+    return (0);
+}
