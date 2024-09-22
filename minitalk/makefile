@@ -13,37 +13,42 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
-NAME = minitalk
+DLIBFT = -L./libft -lft
+DPRINTF = -L./ft_printf -lftprintf
 
-DLIBFT = -Llibft -lft
-DPRINTF = -Lft_printf -lftprintf
+libft = make -C libft
+ft_printf = make -C ft_printf
 
 SRCS = server.c client.c
 OBJS = $(SRCS:%.c=%.o)
 
+ALL: server client
+
 %.o: %.c
 	${CC} ${CFLAGS} -c $< -o $@
 
-ALL: NAME
+server:	server.o
+	${libft}
+	${ft_printf}
+	${CC} ${CFLAGS} -o server server.o ${DLIBFT} ${DPRINTF}
 
-NAME: server client
-
-server:	server.o libft ft_printf
-	${CC} ${CFLAGS} -o $@ $< ${DLIBFT} ${DPRINTF}
-
-client:	client.o libft ft_printf
-	${CC} ${CFLAGS} -o $@ $< ${DLIBFT} ${DPRINTF}
-
-libft:
-	make -C libft
-
-ft_printf:
-	make -C ft_printf
+client:	client.o
+	${libft}
+	${ft_printf}
+	${CC} ${CFLAGS} -o client client.o ${DLIBFT} ${DPRINTF}
 
 clean:
 	rm -f ${OBJS}
 
 fclean: clean
-	rm -f ${NAME}
+	rm -f client server
 
-re:	fclean all
+cleanl: clean
+	make clean -C libft
+	make clean -C ft_printf
+
+fcleanl: cleanl fclean
+	make fclean -C libft
+	make fclean -C ft_printf
+
+re:	fcleanl ALL
