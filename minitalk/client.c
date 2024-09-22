@@ -12,25 +12,36 @@
 
 #include "minitalk.h"
 
-void    ft_01(char *c_pid, char  *send)
+void    send_asc_signal(int pid, char c)
+{
+    int i;
+
+    i = 7;
+    while (i != 0)
+    {
+        
+    }
+    ft_printf("char:%c\n", c);
+}
+
+void    get_var(char *c_pid, char  *send)
 {
     int pid;
+    int i;
 
     pid = ft_atoi(c_pid);
-    ft_printf("pid:%d\n", pid);
-    ft_printf("%s\n", send);
-}    
+    i = 0;
+    while (send[i])
+        send_asc_signal(pid, send[i++]);
+}
 
 
 
 int main(int argc, char **argv)
 {
-    // int i;
-
-    // i = 0;
     if (argc == 3)
     {
-        ft_01(argv[1], argv[2]);
+        get_var(argv[1], argv[2]);
     }
     else
     {

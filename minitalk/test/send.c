@@ -21,7 +21,8 @@ int main(int argc, char **argv)
 
 
     if (argc == 2 && !argv)
-    {    
+    {
+        
     }
     else 
         printf("please follow:./exe pid string.\n");
