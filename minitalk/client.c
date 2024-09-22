@@ -12,15 +12,25 @@
 
 #include "minitalk.h"
 
+void    ft_01(char *c_pid, char  *send)
+{
+    int pid;
+
+    pid = ft_atoi(c_pid);
+    ft_printf("pid:%d\n", pid);
+    ft_printf("%s\n", send);
+}    
+
+
+
 int main(int argc, char **argv)
 {
     // int i;
 
     // i = 0;
-    if (argc == 2)
+    if (argc == 3)
     {
-        ft_printf("%s\n", argv[1]);
-        ft_printf("hi\n");
+        ft_01(argv[1], argv[2]);
     }
     else
     {

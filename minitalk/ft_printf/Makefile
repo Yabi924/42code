@@ -9,16 +9,16 @@ OJB = $(SRC:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OJB)
-	ar rcs $(NAME) $(OJB)
+	@ar rcs $(NAME) $(OJB)
 
 %.o: %.c
-	$(CC) $(CFLAG) -c $< -o $@
+	@$(CC) $(CFLAG) -c $< -o $@
 
 clean:
-	rm -f $(OJB)
+	@rm -f $(OJB)
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all
 
