@@ -1,50 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yyan-bin <yyan-bin@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/14 18:13:47 by yyan-bin          #+#    #+#             */
-/*   Updated: 2024/06/23 12:57:32 by yyan-bin         ###   ########.fr       */
+/*   Created: 2024/06/08 08:48:11 by yyan-bin          #+#    #+#             */
+/*   Updated: 2024/06/23 16:17:46 by yyan-bin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s1)
+size_t	ft_strlcat(char *dest, const char *src, size_t n)
 {
-	int		i;
-	int		j;
-	char	*str;
+	size_t	i;
+	size_t	destlen;
+	size_t	srclen;
 
 	i = 0;
-	j = 0;
-	while (s1[i])
-		i++;
-	str = (char *)malloc(i + 1);
-	if (str == NULL)
-		return (NULL);
-	while (s1[j] != '\0')
+	srclen = ft_strlen(src);
+	if (dest == NULL && n == 0)
+		return (srclen);
+	destlen = ft_strlen(dest);
+	if (n == 0 || destlen > n)
+		return (srclen + n);
+	if (destlen < n - 1 && n > 0)
 	{
-		str[j] = s1[j];
-		j++;
+		while (src[i] && destlen < n - 1)
+			dest[destlen++] = src[i++];
+		dest[destlen] = '\0';
 	}
-	str[j] = '\0';
-	return ((char *)str);
+	i--;
+	while (src[++i] != '\0')
+		destlen++;
+	return (destlen);
 }
-
-#include <stdio.h>
-#include <stdlib.h>
-int main()
-{
-    char *s1 = "abcd";
-    char *s2;
-    s2 = ft_strdup(s1);
-
-    printf("%s\n", s2);
-	if (s2)
-		free(s2);
-    return 0;
-}
-

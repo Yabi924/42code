@@ -1,50 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yyan-bin <yyan-bin@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/14 18:13:47 by yyan-bin          #+#    #+#             */
-/*   Updated: 2024/06/23 12:57:32 by yyan-bin         ###   ########.fr       */
+/*   Created: 2024/06/08 02:55:34 by yyan-bin          #+#    #+#             */
+/*   Updated: 2024/06/23 14:50:35 by yyan-bin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s1)
+char	*ft_strrchr(char *str, int chr )
 {
-	int		i;
-	int		j;
-	char	*str;
+	int	i;
 
 	i = 0;
-	j = 0;
-	while (s1[i])
+	while (str[i] != '\0')
 		i++;
-	str = (char *)malloc(i + 1);
-	if (str == NULL)
-		return (NULL);
-	while (s1[j] != '\0')
+	while (i >= 0)
 	{
-		str[j] = s1[j];
-		j++;
+		if (str[i] == (char)chr)
+			return (str + i);
+		i--;
 	}
-	str[j] = '\0';
-	return ((char *)str);
+	return (NULL);
 }
+/*
+int main() {
+    const char testStr[20] = "Hello, world!";
+    char ch = 'o';
+    char *result = ft_strrchr(testStr, ch);
 
-#include <stdio.h>
-#include <stdlib.h>
-int main()
-{
-    char *s1 = "abcd";
-    char *s2;
-    s2 = ft_strdup(s1);
+    if (result) {
+        printf("Character '%c' found at position: %td\n", ch, result - testStr);
+    } else {
+        printf("Character '%c' not found.\n", ch);
+    }
 
-    printf("%s\n", s2);
-	if (s2)
-		free(s2);
     return 0;
 }
-
+*/

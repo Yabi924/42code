@@ -1,50 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yyan-bin <yyan-bin@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/14 18:13:47 by yyan-bin          #+#    #+#             */
-/*   Updated: 2024/06/23 12:57:32 by yyan-bin         ###   ########.fr       */
+/*   Created: 2024/06/08 02:44:50 by yyan-bin          #+#    #+#             */
+/*   Updated: 2024/06/24 18:51:11 by yyan-bin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s1)
+void	ft_bzero(void *s, size_t n)
 {
-	int		i;
-	int		j;
-	char	*str;
+	unsigned char	*ch;
 
-	i = 0;
-	j = 0;
-	while (s1[i])
-		i++;
-	str = (char *)malloc(i + 1);
-	if (str == NULL)
-		return (NULL);
-	while (s1[j] != '\0')
-	{
-		str[j] = s1[j];
-		j++;
-	}
-	str[j] = '\0';
-	return ((char *)str);
+	if (n == 0)
+		return ;
+	ch = (unsigned char *)s;
+	while (n-- > 0)
+		*ch++ = 0;
 }
-
-#include <stdio.h>
-#include <stdlib.h>
+/*
 int main()
 {
-    char *s1 = "abcd";
-    char *s2;
-    s2 = ft_strdup(s1);
+	char n[10] = "abcabcabc";
+	int i = 0;
 
-    printf("%s\n", s2);
-	if (s2)
-		free(s2);
-    return 0;
+	ft_bzero(n, 5);
+
+	while (i != 10)
+	{
+		if (n[i] == 0)
+			printf("\\0");
+		else
+			printf("%c", n[i]);
+		i++;
+	}
+	return(0);
 }
-
+*/
