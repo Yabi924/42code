@@ -16,26 +16,33 @@ void    send_asc_signal(int pid, char c)
 {
     int i;
 
-    i = 7;
-    while (i != 0)
+    i = 8;
+    while (i > 0)
     {
-        
+        if ((c >> i) & 1)
+        {
+            ft_printf("1");
+            kill(pid, SIGUSR1);
+        }
+        else
+        {
+            ft_printf("0");
+            kill(pid, SIGUSR2);
+        }
+        i--;
+        usleep(100);
     }
-    ft_printf("char:%c\n", c);
+    ft_printf("\n");
 }
 
-void    get_var(char *c_pid, char  *send)
+void    get_var(char *pid, char  *send)
 {
-    int pid;
     int i;
 
-    pid = ft_atoi(c_pid);
     i = 0;
     while (send[i])
-        send_asc_signal(pid, send[i++]);
+        send_asc_signal(ft_atoi(pid), send[i++]);
 }
-
-
 
 int main(int argc, char **argv)
 {

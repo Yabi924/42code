@@ -12,8 +12,22 @@
 
 #include "minitalk.h"
 
+// void    res_word(int signal)
+// {
+//     static char *str;
+//     static char word;
+
+//     while ()
+// }
+
 int main()
 {
-    printf("hi\n");
+    // struct sigaction action;
+    // action.signalhendle = res_word;
+
+    
+    ft_printf("process pid:%s\n", getpid());
+
+
     return (0);
 }
