@@ -12,19 +12,49 @@
 
 #include "minitalk.h"
 
-// void    res_word(int signal)
+// char    res_word(int signal)
 // {
-//     static char *str;
 //     static char word;
+//     static int i;
+//     char c;
 
-//     while ()
+//     word = '\0';
+//     i = 8;
+//     if (signal == SIGUSR1)
+//     {
+//         word >> i = 1;
+//         i--;
+//     }
+//     else
+//     {
+//         word >> i = 0;
+//         i--;
+//     }
+//     if (i == 0)
+//     {
+//         c = word;
+//         word = '\0';
+//         return (c);
+//     }
 // }
+
+void    res_str(int signal)
+{
+    while (1)
+    {
+        // ft_printf("%c", res_word(signal));
+        ft_printf("%d", signal);
+        pause();
+    }
+}
 
 int main()
 {
-    // struct sigaction action;
-    // action.signalhendle = res_word;
+    struct sigaction action;
+    action.sa_handler = res_str;
 
+    sigaction(SIGUSR1, &action, NULL);
+    sigaction(SIGUSR2, &action, NULL);
     
     ft_printf("process pid:%s\n", getpid());
 

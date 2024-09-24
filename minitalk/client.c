@@ -16,8 +16,8 @@ void    send_asc_signal(int pid, char c)
 {
     int i;
 
-    i = 8;
-    while (i > 0)
+    i = 7;
+    while (i >= 0)
     {
         if ((c >> i) & 1)
         {
@@ -30,7 +30,7 @@ void    send_asc_signal(int pid, char c)
             kill(pid, SIGUSR2);
         }
         i--;
-        usleep(100);
+        usleep(500);
     }
     ft_printf("\n");
 }

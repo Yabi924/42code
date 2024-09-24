@@ -22,7 +22,9 @@ ft_printf = make -C ft_printf
 SRCS = server.c client.c
 OBJS = $(SRCS:.c=.o)
 
-ALL: server client
+ALL: NAME
+
+NAME: server client
 
 %.o: %.c
 	@${CC} ${CFLAGS} -c $< -o $@
