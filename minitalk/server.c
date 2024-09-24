@@ -18,7 +18,7 @@
 //     static int i;
 //     char c;
 
-//     word = '\0';
+//     word = 0;
 //     i = 8;
 //     if (signal == SIGUSR1)
 //     {
