@@ -32,12 +32,12 @@ NAME: server client
 server:	server.o
 	@${libft}
 	@${ft_printf}
-	@${CC} ${CFLAGS} -o server server.o ${DLIBFT} ${DPRINTF}
+	${CC} ${CFLAGS} -o server server.o ${DLIBFT} ${DPRINTF}
 
 client:	client.o
 	@${libft}
 	@${ft_printf}
-	@${CC} ${CFLAGS} -o client client.o ${DLIBFT} ${DPRINTF}
+	${CC} ${CFLAGS} -o client client.o ${DLIBFT} ${DPRINTF}
 
 clean:
 	@rm -f ${OBJS}
