@@ -1,16 +1,16 @@
 #include "struct.h"
 
-int ft_lstsize(t_list *lst)
+int	ft_lstsize(t_list *lst)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while (lst)
-    {
-        i++;
-        lst = lst->next;
-    }
-    return (i);
+	i = 0;
+	while (lst)
+	{
+		i++;
+		lst = lst->next;
+	}
+	return (i);
 }
 
 /*
@@ -24,7 +24,9 @@ int main()
     ft_lstadd_front(&node2, node1);
 
     printf("%d\n", ft_lstsize(node1));
-    printf("%s,%s,%s\n", (char *)node1->content, (char *)node1->next->content, (char *)node1->next->next->content);
+    printf("%s,%s,%s\n", (char *)node1->content/
+    , (char *)node1->next->content/
+    , (char *)node1->next->next->content);
 
     return 0;
 }

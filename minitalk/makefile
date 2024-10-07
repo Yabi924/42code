@@ -22,6 +22,9 @@ ft_printf = make -C ft_printf
 SRCS = server.c client.c
 OBJS = $(SRCS:.c=.o)
 
+SRCS_BONUS = server_bonus.c client_bonus.c
+OBJS_BONUS = $(SRCS_BONUS:.c=.o)
+
 ALL: NAME
 
 NAME: server client
@@ -39,6 +42,16 @@ client:	client.o
 	@${ft_printf}
 	${CC} ${CFLAGS} -o client client.o ${DLIBFT} ${DPRINTF}
 
+server_bonus:	server_bonus.o
+	@${libft}
+	@${ft_printf}
+	${CC} ${CFLAGS} -o server_bonus server_bonus.o ${DLIBFT} ${DPRINTF}
+
+client_bonus:	client_bonus.o
+	@${libft}
+	@${ft_printf}
+	${CC} ${CFLAGS} -o client_bonus client_bonus.o ${DLIBFT} ${DPRINTF}
+
 clean:
 	@rm -f ${OBJS}
 
@@ -54,3 +67,11 @@ fcleanl: cleanl fclean
 	@make fclean -C ft_printf
 
 re:	fcleanl ALL
+
+bonus: server_bonus client_bonus 
+
+clean_bonus:
+	@rm -f ${OBJS_BONUS}
+	
+fclean_bonus: clean_bonus
+	@rm -f client_bonus server_bonus

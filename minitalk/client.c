@@ -21,18 +21,18 @@ void    send_asc_signal(int pid, char c)
     {
         if ((c >> i) & 1)
         {
-            ft_printf("1");
+            // ft_printf("1");
             kill(pid, SIGUSR1);
         }
         else
         {
-            ft_printf("0");
+            // ft_printf("0");
             kill(pid, SIGUSR2);
         }
         i--;
-        usleep(500);
+        usleep(1500);
     }
-    ft_printf("\n");
+    // ft_printf("\n");
 }
 
 void    get_var(char *pid, char  *send)
