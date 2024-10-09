@@ -34,6 +34,7 @@ char	*ft_strdup(const char *s1)
 	return ((char *)str);
 }
 
+/*
 #include <stdio.h>
 #include <stdlib.h>
 int main()
@@ -47,4 +48,4 @@ int main()
 		free(s2);
     return 0;
 }
-
+*/

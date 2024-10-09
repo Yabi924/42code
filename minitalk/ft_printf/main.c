@@ -16,10 +16,10 @@
 // }
 
 // %p
-int main()
+int	main()
 {
-    int a = 123;
-    void *s = NULL;
+	int	a = 123;
+	void	*s = NULL;
 
     //int i = ft_printf("%0i", a);
     //printf("\n%d\n", i);

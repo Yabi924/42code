@@ -11,53 +11,38 @@
 /* ************************************************************************** */
 
 #include "minitalk.h"
+#include <stdio.h>
 
-// char    res_word(int signal)
-// {
-//     static char word;
-//     static int i;
-//     char c;
-
-//     word = 0;
-//     i = 8;
-//     if (signal == SIGUSR1)
-//     {
-//         word >> i = 1;
-//         i--;
-//     }
-//     else
-//     {
-//         word >> i = 0;
-//         i--;
-//     }
-//     if (i == 0)
-//     {
-//         c = word;
-//         word = '\0';
-//         return (c);
-//     }
-// }
-
-void    res_str(int signal)
+void	res_word(int signal)
 {
-    while (1)
-    {
-        // ft_printf("%c", res_word(signal));
-        ft_printf("%d", signal);
-        pause();
-    }
+	static char	word = 0;
+	static int	i = 0;
+
+	// ft_printf("\nsignal:%d\n", signal);
+
+	if (signal == SIGUSR1)
+		word = (word << 1) | 1;
+	else if (signal == SIGUSR2)
+		word = (word << 1);
+	i++;
+	if (i == 8)
+	{
+		ft_printf("%c", word);
+		word = 0;
+		i = 0;
+	}
 }
 
-int main()
+int	main(void)
 {
-    struct sigaction action;
-    action.sa_handler = res_str;
+	struct sigaction	action;
 
-    sigaction(SIGUSR1, &action, NULL);
-    sigaction(SIGUSR2, &action, NULL);
-    
-    ft_printf("process pid:%s\n", getpid());
-
-
-    return (0);
+	action.sa_flags = 0;
+	action.sa_handler = res_word;
+	sigaction(SIGUSR1, &action, NULL);
+	sigaction(SIGUSR2, &action, NULL);
+	ft_printf("process pid:%d\n", getpid());
+	while (1)
+		pause();
+	return (0);
 }
