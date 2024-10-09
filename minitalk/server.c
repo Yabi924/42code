@@ -18,8 +18,6 @@ void	res_word(int signal)
 	static char	word = 0;
 	static int	i = 0;
 
-	// ft_printf("\nsignal:%d\n", signal);
-
 	if (signal == SIGUSR1)
 		word = (word << 1) | 1;
 	else if (signal == SIGUSR2)
@@ -41,7 +39,7 @@ int	main(void)
 	action.sa_handler = res_word;
 	sigaction(SIGUSR1, &action, NULL);
 	sigaction(SIGUSR2, &action, NULL);
-	ft_printf("process pid:%d\n", getpid());
+	ft_printf("process pid: %d\n", getpid());
 	while (1)
 		pause();
 	return (0);

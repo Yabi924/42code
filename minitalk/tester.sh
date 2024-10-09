@@ -21,7 +21,7 @@ L_Gray='\e[0;37m'
 White='\e[1;37m'
 NC='\e[0m' 
 
-p_id="24080"
+p_id="30088"
 
 
 # echo "${L_purple}\n wtf ${NC}"
