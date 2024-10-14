@@ -1,51 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yyan-bin <yyan-bin@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/14 18:13:47 by yyan-bin          #+#    #+#             */
-/*   Updated: 2024/06/23 12:57:32 by yyan-bin         ###   ########.fr       */
+/*   Created: 2024/06/08 08:19:35 by yyan-bin          #+#    #+#             */
+/*   Updated: 2024/06/08 16:00:02 by yyan-bin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s1)
+size_t	ft_strlcpy(char *dest, const char *src, size_t dstsize)
 {
-	int		i;
-	int		j;
-	char	*str;
+	size_t	i;
+	size_t	src_len;
 
 	i = 0;
-	j = 0;
-	while (s1[i])
-		i++;
-	str = (char *)malloc(i + 1);
-	if (str == NULL)
-		return (NULL);
-	while (s1[j] != '\0')
+	src_len = 0;
+	while (src[src_len])
+		src_len++;
+	if (dstsize == 0)
+		return (src_len);
+	while (src[i] != '\0' && i < dstsize - 1)
 	{
-		str[j] = s1[j];
-		j++;
+		dest[i] = src[i];
+		i++;
 	}
-	str[j] = '\0';
-	return ((char *)str);
+	dest[i] = '\0';
+	return (src_len);
 }
-
 /*
-#include <stdio.h>
-#include <stdlib.h>
-int main()
-{
-    char *s1 = "abcd";
-    char *s2;
-    s2 = ft_strdup(s1);
+int main() {
+    char dest[10];
+    char src[10] = "abcdefg";
 
-    printf("%s\n", s2);
-	if (s2)
-		free(s2);
+    ft_strlcpy(dest, src, 6);
+    printf("%s\n", dest);
     return 0;
 }
 */

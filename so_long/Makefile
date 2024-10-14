@@ -1,17 +1,27 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
+LFLAGS = -lft -lmlx -lmlx_Linux -lX11 -lXext -lm
 
 NAME = so_long
 SRC = test.c
-OJB = $(SRC:.c=.o)
+OBJ = $(SRC:.c=.o)
+
+LIB = ./lib/
+
+MLX_PATH = $(LIB)minilibx/
+LFT_PATH = $(LIB)libft
+
+PATH_LIB = -L$(MLX_PATH) -L$(LFT_PATH)
 
 all: $(NAME)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -Imlx -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJ)
-	$(CC) $(OBJ) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+	make -C $(MLX_PATH)
+	make -C $(LFT_PATH)
+	$(CC) $(OBJ) -o $(NAME) main.c $(PATH_LIB) $(LFLAGS)
 
 clean:
 	rm -f $(OJB)

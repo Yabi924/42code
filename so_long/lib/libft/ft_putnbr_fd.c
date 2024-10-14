@@ -1,51 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yyan-bin <yyan-bin@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/14 18:13:47 by yyan-bin          #+#    #+#             */
-/*   Updated: 2024/06/23 12:57:32 by yyan-bin         ###   ########.fr       */
+/*   Created: 2024/06/23 14:24:45 by yyan-bin          #+#    #+#             */
+/*   Updated: 2024/06/23 14:51:12 by yyan-bin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s1)
+void	ft_putnbr_fd(int n, int fd)
 {
-	int		i;
-	int		j;
-	char	*str;
+	long long	num;
 
-	i = 0;
-	j = 0;
-	while (s1[i])
-		i++;
-	str = (char *)malloc(i + 1);
-	if (str == NULL)
-		return (NULL);
-	while (s1[j] != '\0')
+	num = n;
+	if (num < 0)
 	{
-		str[j] = s1[j];
-		j++;
+		ft_putchar_fd('-', fd);
+		num = num * -1;
 	}
-	str[j] = '\0';
-	return ((char *)str);
+	if (num >= 10)
+	{
+		ft_putnbr_fd(num / 10, fd);
+		ft_putchar_fd(num % 10 + '0', fd);
+	}
+	else
+	{
+		ft_putchar_fd(num + '0', fd);
+	}
 }
-
-/*
-#include <stdio.h>
-#include <stdlib.h>
-int main()
-{
-    char *s1 = "abcd";
-    char *s2;
-    s2 = ft_strdup(s1);
-
-    printf("%s\n", s2);
-	if (s2)
-		free(s2);
-    return 0;
-}
-*/

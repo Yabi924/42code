@@ -1,51 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yyan-bin <yyan-bin@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/14 18:13:47 by yyan-bin          #+#    #+#             */
-/*   Updated: 2024/06/23 12:57:32 by yyan-bin         ###   ########.fr       */
+/*   Created: 2024/06/08 02:51:43 by yyan-bin          #+#    #+#             */
+/*   Updated: 2024/06/08 02:51:58 by yyan-bin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s1)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	int		i;
-	int		j;
-	char	*str;
+	unsigned char	*cpy;
+	const char		*ori;
 
-	i = 0;
-	j = 0;
-	while (s1[i])
-		i++;
-	str = (char *)malloc(i + 1);
-	if (str == NULL)
+	cpy = (unsigned char *)dest;
+	ori = (const char *)src;
+	if (!cpy && !ori)
 		return (NULL);
-	while (s1[j] != '\0')
-	{
-		str[j] = s1[j];
-		j++;
-	}
-	str[j] = '\0';
-	return ((char *)str);
+	while (n--)
+		*cpy++ = *ori++;
+	return (dest);
 }
-
 /*
-#include <stdio.h>
-#include <stdlib.h>
 int main()
 {
-    char *s1 = "abcd";
-    char *s2;
-    s2 = ft_strdup(s1);
+	char dest[10];
+	char src[10] = "abc123xyz";
 
-    printf("%s\n", s2);
-	if (s2)
-		free(s2);
-    return 0;
+	ft_memcpy(dest, src, 4);
+
+	printf("%s\n", dest);
+	return 0;
 }
 */

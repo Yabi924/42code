@@ -1,51 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yyan-bin <yyan-bin@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/14 18:13:47 by yyan-bin          #+#    #+#             */
-/*   Updated: 2024/06/23 12:57:32 by yyan-bin         ###   ########.fr       */
+/*   Created: 2024/06/08 16:00:31 by yyan-bin          #+#    #+#             */
+/*   Updated: 2024/06/08 16:31:42 by yyan-bin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s1)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	int		i;
-	int		j;
-	char	*str;
+	size_t				i;
+	const unsigned char	*s;
+	const unsigned char	*ss;
 
 	i = 0;
-	j = 0;
-	while (s1[i])
-		i++;
-	str = (char *)malloc(i + 1);
-	if (str == NULL)
-		return (NULL);
-	while (s1[j] != '\0')
+	s = s1;
+	ss = s2;
+	while (i < n)
 	{
-		str[j] = s1[j];
-		j++;
+		if (s[i] != ss[i])
+			return (s[i] - ss[i]);
+		i++;
 	}
-	str[j] = '\0';
-	return ((char *)str);
+	return (0);
 }
-
 /*
-#include <stdio.h>
-#include <stdlib.h>
-int main()
+int	main()
 {
-    char *s1 = "abcd";
-    char *s2;
-    s2 = ft_strdup(s1);
+	char s1[10] = "123456789";
+	char s2[10] = "123456689";
 
-    printf("%s\n", s2);
-	if (s2)
-		free(s2);
-    return 0;
+	printf("%d\n", ft_memcmp(s1, s2, 10));
+	return (0);
 }
 */

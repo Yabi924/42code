@@ -1,16 +1,6 @@
-#include <mlx.h>
-#include <stdio.h>
+#include "so_long.h"
 
-int	main(void)
+void nothing(int i)
 {
-	void	*mlx;
-	void	*mlx_win;
-
-	mlx = mlx_init();
-    if (!mlx)
-        printf("fuck la\n");
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
-    if (!mlx_win)
-        printf("fuck\n");
-	mlx_loop(mlx);
+    printf("from nothing: %d\n", i);
 }
