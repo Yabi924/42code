@@ -36,12 +36,12 @@ $(NAME): $(OBJ)
 	@echo "Hello! $(NAME)"
 
 ft:
-	@make -C ./lib/libft
-	@make -C ./lib/ft_printf
+	@make -C ./lib/libft --no-print-directory
+	@make -C ./lib/ft_printf --no-print-directory
 	@echo "make libft & ft_printf"
 
 mlx:
-	@make -C ./lib/minilibx
+	@make -C ./lib/minilibx --no-print-directory
 	@echo "make mlx"
 
 clean:
@@ -53,17 +53,17 @@ fclean: clean
 	@echo "clean $(NAME)"
 
 cleanl:
-	@make clean -C ./lib/libft
-	@make clean -C ./lib/ft_printf
+	@make clean -C ./lib/libft --no-print-directory
+	@make clean -C ./lib/ft_printf --no-print-directory
 	@echo "clean obj libft & ft_printf"
 
 fcleanl: fclean
-	@make fclean -C ./lib/libft
-	@make fclean -C ./lib/ft_printf
-	@echo "clean libft.a & ft_printf.a"
+	@make fclean -C ./lib/libft --no-print-directory
+	@make fclean -C ./lib/ft_printf --no-print-directory
+	@echo "fclean libft.a & ft_printf.a & so_long"
 
-fcm: fcleanl
-	@make clean -C ./lib/minilibx
+cleanmlx: fcleanl
+	@make clean -C ./lib/minilibx --no-print-directory
 	@echo "clean mlx.a"
 
 re: fclean all
