@@ -3,10 +3,10 @@
 
 # ifdef __APPLE__
     #include <mlx.h>
-# elif defined (__LINUX__)
+# else
     # include "lib/minilibx/mlx.h"
     # include "lib/minilibx/mlx_int.h"
-# endif 
+# endif
 
 # include "lib/libft/libft.h"
 # include <stdio.h>

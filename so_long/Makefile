@@ -1,7 +1,7 @@
 SYS := $(shell uname -s)
 
 ifeq ($(SYS), Linux)
-	LFLAGS = -lft -lmlx -lmlx_Linux -lX11 -lXext -lm
+	LFLAGS = -lmlx -lmlx_Linux -lX11 -lXext -lm
 	LIBS = $(PATH_LIB)
 else ifeq ($(SYS), Darwin)
 	LFLAGS = -lmlx -framework OpenGL -framework AppKit
@@ -39,6 +39,12 @@ ft:
 	make -C ./lib/libft
 	make -C ./lib/ft_printf
 
+mlx:
+	make -C ./lib/minilibx
+
+fm: ft mlx
+	@echo libft&ft_printf&mlx
+
 clean:
 	@rm -rf ./obj/
 	@echo "clean obj"
@@ -54,6 +60,6 @@ cleanl:
 fcleanl: fclean
 	make fclean -C ./lib/libft
 	make fclean -C ./lib/ft_printf
-
+	make clean -C ./lib/minilibx
 
 re: fclean all
