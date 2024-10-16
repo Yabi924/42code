@@ -30,14 +30,15 @@ NAME: server client
 	@${CC} ${CFLAGS} -c $< -o $@
 
 server:	server.o
-	@${libft} --no-print-directory
-	@${ft_printf} --no-print-directory
 	${CC} ${CFLAGS} -o server server.o ${DLIBFT} ${DPRINTF}
 
 client:	client.o
+	${CC} ${CFLAGS} -o client client.o ${DLIBFT} ${DPRINTF}
+
+
+ft:
 	@${libft} --no-print-directory
 	@${ft_printf} --no-print-directory
-	${CC} ${CFLAGS} -o client client.o ${DLIBFT} ${DPRINTF}
 
 clean:
 	@rm -f ${OBJS}

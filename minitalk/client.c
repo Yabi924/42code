@@ -12,7 +12,7 @@
 
 #include "minitalk.h"
 
-static void res_signal(int signal)
+static void	res_signal(int signal)
 {
 	if (signal == SIGUSR2 || signal == SIGUSR1)
 		ft_printf("server received signal\n");
@@ -30,7 +30,7 @@ void	send_asc_signal(int pid, char c)
 		else
 			kill(pid, SIGUSR2);
 		i--;
-		usleep(1500);
+		usleep(300);
 	}
 }
 
