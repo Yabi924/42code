@@ -12,6 +12,12 @@
 
 #include "minitalk.h"
 
+static void res_signal(int signal)
+{
+	if (signal == SIGUSR2 || signal == SIGUSR1)
+		ft_printf("server received signal\n");
+}
+
 void	send_asc_signal(int pid, char c)
 {
 	int	i;
@@ -34,7 +40,12 @@ void	get_var(char *pid, char *send)
 
 	i = 0;
 	while (send[i])
+	{
+		signal(SIGUSR2, res_signal);
+		signal(SIGUSR1, res_signal);
 		send_asc_signal(ft_atoi(pid), send[i++]);
+	}
+	send_asc_signal(ft_atoi(pid), '\n');
 }
 
 int	main(int argc, char **argv)

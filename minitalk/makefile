@@ -30,13 +30,13 @@ NAME: server client
 	@${CC} ${CFLAGS} -c $< -o $@
 
 server:	server.o
-	@${libft}
-	@${ft_printf}
+	@${libft} --no-print-directory
+	@${ft_printf} --no-print-directory
 	${CC} ${CFLAGS} -o server server.o ${DLIBFT} ${DPRINTF}
 
 client:	client.o
-	@${libft}
-	@${ft_printf}
+	@${libft} --no-print-directory
+	@${ft_printf} --no-print-directory
 	${CC} ${CFLAGS} -o client client.o ${DLIBFT} ${DPRINTF}
 
 clean:
@@ -46,11 +46,11 @@ fclean: clean
 	@rm -f client server
 
 cleanl: clean
-	@make clean -C libft
-	@make clean -C ft_printf
+	@make clean -C libft --no-print-directory
+	@make clean -C ft_printf --no-print-directory
 
 fcleanl: cleanl fclean
-	@make fclean -C libft
-	@make fclean -C ft_printf
+	@make fclean -C libft --no-print-directory
+	@make fclean -C ft_printf --no-print-directory
 
 re:	fcleanl all

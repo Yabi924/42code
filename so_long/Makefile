@@ -3,7 +3,9 @@ CFLAGS = -Wall -Wextra -Werror
 LFLAGS = -lft -lmlx -lmlx_Linux -lX11 -lXext -lm
 
 NAME = so_long
+
 SRC = test.c
+
 OBJ = $(SRC:.c=.o)
 
 LIB = ./lib/
@@ -16,17 +18,22 @@ PATH_LIB = -L$(MLX_PATH) -L$(LFT_PATH)
 all: $(NAME)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJ)
-	make -C $(MLX_PATH)
-	make -C $(LFT_PATH)
-	$(CC) $(OBJ) -o $(NAME) main.c $(PATH_LIB) $(LFLAGS)
+	@make -C $(MLX_PATH) --no-print-directory
+	@make -C $(LFT_PATH) --no-print-directory
+	@$(CC) -g $(OBJ) -o $(NAME) main.c $(PATH_LIB) $(LFLAGS)
+	@mkdir obj
+	@mv $(OBJ) obj
+	@echo "Hello! $(NAME)"
 
 clean:
-	rm -f $(OJB)
+	@rm -rf ./obj/
+	@echo "clean obj"
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -rf $(NAME)
+	@echo "clean $(NAME)"
 
 re: fclean all
