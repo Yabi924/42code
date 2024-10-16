@@ -35,7 +35,6 @@ server:	server.o
 client:	client.o
 	${CC} ${CFLAGS} -o client client.o ${DLIBFT} ${DPRINTF}
 
-
 ft:
 	@${libft} --no-print-directory
 	@${ft_printf} --no-print-directory
