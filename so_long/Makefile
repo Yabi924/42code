@@ -13,9 +13,9 @@ CFLAGS = -Wall -Wextra -Werror
 
 NAME = so_long
 
-SRC = main.c
+SRC = srcs/main.c
 
-OBJ = $(SRC:%.c=obj/%.o)
+OBJ = $(SRC:srcs/%.c=srcs/%.o)
 
 MLX_PATH = ./lib/minilibx/
 LFT_PATH = ./lib/libft/libft.a
@@ -23,12 +23,9 @@ PF_PATH = ./lib/ft_printf/ftprintf.a
 
 PATH_LIB = -L$(MLX_PATH) -L$(LFT_PATH) -L$(PF_PATH)
 
-all: obj $(NAME)
+all: $(NAME)
 
-obj:
-	@mkdir -p obj
-
-obj/%.o: %.c
+%.o: %.c
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJ)
@@ -45,7 +42,7 @@ mlx:
 	@echo "make mlx"
 
 clean:
-	@rm -rf ./obj/
+	@rm -rf srcs/%.o
 	@echo "clean obj"
 
 fclean: clean

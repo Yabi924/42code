@@ -4,11 +4,11 @@
 # ifdef __APPLE__
     #include <mlx.h>
 # else
-    # include "lib/minilibx/mlx.h"
-    # include "lib/minilibx/mlx_int.h"
+    # include "../lib/minilibx/mlx.h"
+    # include "../lib/minilibx/mlx_int.h"
 # endif
 
-# include "lib/libft/libft.h"
+# include "../lib/libft/libft.h"
 # include <stdio.h>
 # include <unistd.h>
 
