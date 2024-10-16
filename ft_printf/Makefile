@@ -9,7 +9,7 @@ OJB = $(SRC:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OJB)
-	ar rcs $(NAME) $(OJB)
+	@ar rcs $(NAME) $(OJB)
 
 %.o: %.c
 	$(CC) $(CFLAG) -c $< -o $@
