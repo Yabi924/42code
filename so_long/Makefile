@@ -1,32 +1,43 @@
+SYS := $(shell uname -s)
+
+ifeq ($(SYS), Linux)
+	LFLAGS = -lft -lmlx -lmlx_Linux -lX11 -lXext -lm
+	LIBS = $(PATH_LIB)
+else ifeq ($(SYS), Darwin)
+	LFLAGS = -lmlx -framework OpenGL -framework AppKit
+	LIBS = $(LFT_PATH)
+endif
+
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
-LFLAGS = -lft -lmlx -lmlx_Linux -lX11 -lXext -lm
 
 NAME = so_long
 
-SRC = test.c
+SRC = main.c
 
-OBJ = $(SRC:.c=.o)
+OBJ = $(SRC:%.c=obj/%.o)
 
-LIB = ./lib/
+MLX_PATH = ./lib/minilibx/
+LFT_PATH = ./lib/libft/libft.a
+PF_PATH = ./lib/ft_printf/ftprintf.a
 
-MLX_PATH = $(LIB)minilibx/
-LFT_PATH = $(LIB)libft
+PATH_LIB = -L$(MLX_PATH) -L$(LFT_PATH) -L$(PF_PATH)
 
-PATH_LIB = -L$(MLX_PATH) -L$(LFT_PATH)
+all: obj $(NAME)
 
-all: $(NAME)
+obj:
+	@mkdir -p obj
 
-%.o: %.c
+obj/%.o: %.c
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJ)
-	@make -C $(MLX_PATH) --no-print-directory
-	@make -C $(LFT_PATH) --no-print-directory
-	@$(CC) -g $(OBJ) -o $(NAME) main.c $(PATH_LIB) $(LFLAGS)
-	@mkdir obj
-	@mv $(OBJ) obj
+	@$(CC) $(OBJ) $(LIBS) $(LFLAGS) -o $(NAME)
 	@echo "Hello! $(NAME)"
+
+ft:
+	make -C ./lib/libft
+	make -C ./lib/ft_printf
 
 clean:
 	@rm -rf ./obj/
@@ -35,5 +46,14 @@ clean:
 fclean: clean
 	@rm -rf $(NAME)
 	@echo "clean $(NAME)"
+
+cleanl:
+	make clean -C ./lib/libft
+	make clean -C ./lib/ft_printf
+
+fcleanl: fclean
+	make fclean -C ./lib/libft
+	make fclean -C ./lib/ft_printf
+
 
 re: fclean all
