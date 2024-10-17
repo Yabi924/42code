@@ -5,21 +5,21 @@ ifeq ($(SYS), Linux)
 	LIBS = $(PATH_LIB)
 else ifeq ($(SYS), Darwin)
 	LFLAGS = -lmlx -framework OpenGL -framework AppKit
-	LIBS = $(LFT_PATH)
+	LIBS = $(LFT_PATH) $(PF_PATH)
 endif
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
 
 NAME = so_long
 
-SRC = srcs/main.c
+SRC = srcs/main.c srcs/map_handle.c srcs/exit.c
 
 OBJ = $(SRC:srcs/%.c=srcs/%.o)
 
 MLX_PATH = ./lib/minilibx/
 LFT_PATH = ./lib/libft/libft.a
-PF_PATH = ./lib/ft_printf/ftprintf.a
+PF_PATH = ./lib/ft_printf/libftprintf.a
 
 PATH_LIB = -L$(MLX_PATH) -L$(LFT_PATH) -L$(PF_PATH)
 
@@ -29,7 +29,7 @@ all: $(NAME)
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJ)
-	@$(CC) $(OBJ) $(LIBS) $(LFLAGS) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) $(LIBS) $(LFLAGS) -o $(NAME)
 	@echo "Hello! $(NAME)"
 
 ft:
@@ -42,7 +42,7 @@ mlx:
 	@echo "make mlx"
 
 clean:
-	@rm -rf srcs/%.o
+	@rm -rf $(OBJ)
 	@echo "clean obj"
 
 fclean: clean
