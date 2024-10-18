@@ -6,20 +6,24 @@ void    moving(t_game *game, int key)
     {
         if (game->map[game->player_y - 1][game->player_x] != '1')
             game->player_y--;
+        game->move_count++;
     }
     else if (key == a_key || key == left_key)
     {
         if (game->map[game->player_y][game->player_x - 1] != '1')
             game->player_x--;
+        game->move_count++;
     }
     else if (key == s_key || key == down_key)
     {
         if (game->map[game->player_y + 1][game->player_x] != '1')
             game->player_y++;
+        game->move_count++;
     }
     else if (key == d_key || key == right_key)
     {
         if (game->map[game->player_y][game->player_x + 1] != '1')
             game->player_x++;
+        game->move_count++;
     }
 }

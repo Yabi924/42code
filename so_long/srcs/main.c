@@ -41,6 +41,7 @@ void game_init(t_game *game, char *map)
     game->col_len = 0;
     game->exit_len = 0;
     game->animation_count = 0;
+    game->move_count = 0;
     img_init(game);
     map_init(game);
 }

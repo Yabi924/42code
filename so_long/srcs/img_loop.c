@@ -1,5 +1,13 @@
 #include "so_long.h"
 
+void    check_position(t_game *game)
+{
+    if (game->emy_y == game->player_y && \
+        game->emy_x == game->player_x)
+        exit_lose(game);
+    
+}
+
 void    check_and_put(t_game *game, int j, int i, int x, int y)
 {
     x *= 64;
@@ -66,7 +74,7 @@ int img_loop(t_game *game)
 {
     loop_bg_wall(game);
     loop_char(game);
-    
+    check_position(game);
     mlx_put_image_to_window(game->mlx, game->mlx_win, \
         game->mlx_nijika, game->player_x * 64, game->player_y * 64);
     mlx_put_image_to_window(game->mlx, game->mlx_win, \
