@@ -1,84 +1,84 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# ifdef __APPLE__
-    #include <mlx.h>
-    #define esc 53
-    #define w_key 13
-    #define a_key 0
-    #define s_key 1
-    #define d_key 2
-    #define up_key 126
-    #define down_key 125
-    #define left_key 123
-    #define right_key 124
-# else
-    # include "../lib/minilibx/mlx.h"
-    # include "../lib/minilibx/mlx_int.h"
-    #define esc 65307
-    #define w_key 119
-    #define a_key 97
-    #define s_key 115
-    #define d_key 100
-    #define up_key 65362
-    #define down_key 65364
-    #define left_key 65361
-    #define right_key 65363
-# endif
-
 # include "../lib/libft/libft.h"
 # include "../lib/ft_printf/ft_printf.h"
 # include <stdio.h>
 # include <unistd.h>
 
+# ifdef __APPLE__
+#  include <mlx.h>
+#  define ESC 53
+#  define W_KEY 13
+#  define A_KEY 0
+#  define S_KEY 1
+#  define D_KEY 2
+#  define UP_KEY 126
+#  define DOWN_KEY 125
+#  define LETF_KEY 123
+#  define RIGHT_KEY 124
+# else
+#  include "../lib/minilibx/mlx.h"
+#  include "../lib/minilibx/mlx_int.h"
+#  define ESC 65307
+#  define W_KEY 119
+#  define A_KEY 97
+#  define S_KEY 115
+#  define D_KEY 100
+#  define UP_KEY 65362
+#  define DOWN_KEY 65364
+#  define LETF_KEY 65361
+#  define RIGHT_KEY 65363
+# endif
+
 typedef struct s_game
 {
-    void    *mlx;
-    void    *mlx_win;
-    void    *mlx_bg;
-    void    *mlx_col;
-    void    *mlx_exit;
-    void    *mlx_nijika;
-    void    *mlx_ryo;
-    void    *mlx_wall;
+	void	*mlx;
+	void	*mlx_win;
+	void	*mlx_bg;
+	void	*mlx_col;
+	void	*mlx_exit;
+	void	*mlx_nijika;
+	void	*mlx_ryo;
+	void	*mlx_wall;
 
-    char    *path_bg;
-    char    *path_col;
-    char    *path_exit;
-    char    *path_nijika;
-    char    *path_ryo;
-    char    *path_wall;
+	char	*path_bg;
+	char	*path_col;
+	char	*path_exit;
+	char	*path_nijika;
+	char	*path_ryo;
+	char	*path_wall;
 
-    char    *path_map;
-    char    **arr_map;
-    char    **map;
-    int     map_heg;
-    int     map_wid;
+	char	*path_map;
+	char	**arr_map;
+	char	**map;
+	int		map_heg;
+	int		map_wid;
 
-    int     img_size;
+	int		img_size;
 
-    int     ff_col;
-    int     ff_exit;
-    int     player_len;
-    int     player_x;
-    int     player_y;
-    int     emy_len;
-    int     emy_x;
-    int     emy_y;
-    int     col_len;
-    int     exit_len;
+	int		ff_col;
+	int		ff_exit;
+	int		player_len;
+	int		player_x;
+	int		player_y;
+	int		emy_len;
+	int		emy_x;
+	int		emy_y;
+	int		col_len;
+	int		exit_len;
 
-    int     animation_count;
-    int     move_count;
-}       t_game;
+	int		animation_count;
+	int		move_count;
+}	t_game;
 
-void    map_init(t_game *game);
-void    exit_game(t_game *game);
-void    exit_map_error(t_game *game);
-void    exit_lose(t_game *game);
-void    exit_win(t_game *game);
-int     img_loop(t_game *game);
-void    flood_fill(t_game *game);
-void    moving(t_game *game, int key);
+void	map_init(t_game *game);
+void	exit_game(t_game *game);
+void	exit_map_error(t_game *game);
+void	exit_lose(t_game *game);
+void	exit_win(t_game *game);
+int		img_loop(t_game *game);
+void	flood_fill(t_game *game);
+void	moving(t_game *game, int key);
 
 #endif

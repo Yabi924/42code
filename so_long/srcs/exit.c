@@ -18,50 +18,49 @@
 //         mlx_destroy_window(game->mlx, game->mlx_win);
 // }
 
-void    free_map(t_game *game)
+void	free_map(t_game *game)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    if (game->arr_map)
-    {
-        while (game->arr_map[i])
-            free(game->arr_map[i++]);
-        free(game->arr_map);
-    }
-    i = 0;
-    if (game->map)
-    {
-        while (game->map[i])
-            free(game->map[i++]);
-        free(game->map);
-    }
-    // del_img(game);
+	i = 0;
+	if (game->arr_map)
+	{
+		while (game->arr_map[i])
+			free(game->arr_map[i++]);
+		free(game->arr_map);
+	}
+	i = 0;
+	if (game->map)
+	{
+		while (game->map[i])
+			free(game->map[i++]);
+		free(game->map);
+	}
 }
 
-void    exit_game(t_game *game)
+void	exit_game(t_game *game)
 {
-    free_map(game);
-    exit(0);
+	free_map(game);
+	exit(0);
 }
 
-void    exit_map_error(t_game *game)
+void	exit_map_error(t_game *game)
 {
-    ft_printf("map error\n");
-    free_map(game);
-    exit(0);
+	ft_printf("map error\n");
+	free_map(game);
+	exit(0);
 }
 
-void    exit_lose(t_game *game)
+void	exit_lose(t_game *game)
 {
-    ft_printf("You Lose!! Try Again!\n");
-    free_map(game);
-    exit(0);
+	ft_printf("You Lose!! Try Again!\n");
+	free_map(game);
+	exit(0);
 }
 
-void    exit_win(t_game *game)
+void	exit_win(t_game *game)
 {
-    ft_printf("You Win!! Congssss!\n");
-    free_map(game);
-    exit(0);
+	ft_printf("You Win!! Congssss!\n");
+	free_map(game);
+	exit(0);
 }
