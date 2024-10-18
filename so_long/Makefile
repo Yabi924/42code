@@ -2,10 +2,10 @@ SYS := $(shell uname -s)
 
 ifeq ($(SYS), Linux)
 	LFLAGS = -lmlx -lmlx_Linux -lX11 -lXext -lm
-	LIBS = $(PATH_LIB)
+	LIBS = $(PATH_LIB) -L./lib/libft -lft -L./lib/ft_printf -lftprintf
 else ifeq ($(SYS), Darwin)
 	LFLAGS = -lmlx -framework OpenGL -framework AppKit
-	LIBS = $(LFT_PATH) $(PF_PATH)
+	LIBS = $(LFT_PATH) $(PF_PATH) -L./lib/libft -lft -L./lib/ft_printf -lftprintf
 endif
 
 CC = gcc
@@ -13,7 +13,11 @@ CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
 
 NAME = so_long
 
-SRC = srcs/main.c srcs/map_handle.c srcs/exit.c
+SRC = srcs/main.c \
+	srcs/map_handle.c \
+	srcs/exit.c \
+	srcs/img_loop.c \
+	srcs/flood_fill.c
 
 OBJ = $(SRC:srcs/%.c=srcs/%.o)
 

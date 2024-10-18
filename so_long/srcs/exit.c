@@ -12,14 +12,15 @@ void    free_map(t_game *game)
 
 void    exit_game(t_game *game)
 {
-    free_map(game);
+    if (game->arr_map)
+        free_map(game);
     exit(0);
 }
 
 void    exit_map_error(t_game *game)
 {
     ft_printf("map error\n");
-    free_map(game);
+    if (game->arr_map)
+        free_map(game);
     exit(0);
 }
-

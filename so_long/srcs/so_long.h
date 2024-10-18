@@ -36,24 +36,46 @@ typedef struct s_game
     void    *mlx;
     void    *mlx_win;
     void    *mlx_bg;
+    void    *mlx_col;
+    void    *mlx_exit;
+    void    *mlx_nijika;
+    void    *mlx_nijika2;
+    void    *mlx_ryo;
+    void    *mlx_ryo2;
+    void    *mlx_wall;
 
-    char    *path_col;
     char    *path_bg;
+    char    *path_col;
+    char    *path_exit;
+    char    *path_nijika;
+    char    *path_nijika2;
+    char    *path_ryo;
+    char    *path_ryo2;
+    char    *path_wall;
+
     char    *path_map;
-
-    int     img_size;
-    int     win_size;
-
-    int     x;
-    int     y;
+    char    **arr_map;
     int     map_heg;
     int     map_wid;
 
-    char    **arr_map;
+    int     img_size;
+
+    int     ff_col;
+    int     ff_exit;
+    int     player_len;
+    int     player_x;
+    int     player_y;
+    int     emy_len;
+    int     emy_x;
+    int     emy_y;
+    int     col_len;
+    int     exit_len;
 }       t_game;
 
 void    map_init(t_game *game);
 void    exit_game(t_game *game);
 void    exit_map_error(t_game *game);
+int     img_loop(t_game *game);
+void    flood_fill(t_game *game);
 
 #endif
