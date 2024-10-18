@@ -2,25 +2,25 @@
 
 void	moving(t_game *game, int key)
 {
-	if (key == w_key || key == up_key)
+	if (key == W_KEY || key == UP_KEY)
 	{
 		if (game->map[game->player_y - 1][game->player_x] != '1')
 			game->player_y--;
 		game->move_count++;
 	}
-	else if (key == a_key || key == left_key)
+	else if (key == A_KEY || key == LEFT_KEY)
 	{
 		if (game->map[game->player_y][game->player_x - 1] != '1')
 			game->player_x--;
 		game->move_count++;
 	}
-	else if (key == s_key || key == down_key)
+	else if (key == S_KEY || key == DOWN_KEY)
 	{
 		if (game->map[game->player_y + 1][game->player_x] != '1')
 			game->player_y++;
 		game->move_count++;
 	}
-	else if (key == d_key || key == right_key)
+	else if (key == D_KEY || key == RIGHT_KEY)
 	{
 		if (game->map[game->player_y][game->player_x + 1] != '1')
 			game->player_x++;
@@ -30,11 +30,11 @@ void	moving(t_game *game, int key)
 
 int	key_handler(int key, t_game *game)
 {
-	if (key == esc)
+	if (key == ESC)
 		exit_game(game);
-	else if (key == w_key || key == a_key || key == s_key || \
-		key == d_key || key == left_key || key == right_key || \
-		key == down_key || key == up_key)
+	else if (key == W_KEY || key == A_KEY || key == S_KEY || \
+		key == D_KEY || key == LEFT_KEY || key == RIGHT_KEY || \
+		key == DOWN_KEY || key == UP_KEY)
 		moving(game, key);
 	return (0);
 }

@@ -15,7 +15,7 @@
 #  define D_KEY 2
 #  define UP_KEY 126
 #  define DOWN_KEY 125
-#  define LETF_KEY 123
+#  define LEFT_KEY 123
 #  define RIGHT_KEY 124
 # else
 #  include "../lib/minilibx/mlx.h"
@@ -27,7 +27,7 @@
 #  define D_KEY 100
 #  define UP_KEY 65362
 #  define DOWN_KEY 65364
-#  define LETF_KEY 65361
+#  define LEFT_KEY 65361
 #  define RIGHT_KEY 65363
 # endif
 
