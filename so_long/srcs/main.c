@@ -35,6 +35,9 @@ void game_init(t_game *game, char *map)
     game->map_wid = 0;
     game->ff_col = 0;
     game->ff_exit = 0;
+    game->emy_len = 0;
+    game->emy_x = 0;
+    game->emy_y = 0;
     game->player_len = 0;
     game->player_x = 0;
     game->player_y = 0;

@@ -18,7 +18,7 @@ int check_wid_same(char **s)
     return (wid);
 }
 
-void    count(t_game *game, int i, int j)
+void    count_obj(t_game *game, int i, int j)
 {
     if (game->arr_map[j][i] == 'P')
     {
@@ -52,13 +52,17 @@ int check(t_game *game)
             if ((j == 0 || i == 0 || j == game->map_heg - 1 || \
                 i == game->map_wid - 1) && game->arr_map[j][i] != '1')
                 return (1);
-            count(game, i, j);
+            if (game->arr_map[j][i] != '1' && game->arr_map[j][i] != '0' && \
+                game->arr_map[j][i] != 'E' && game->arr_map[j][i] != 'A' && \
+                game->arr_map[j][i] != 'C' && game->arr_map[j][i] != 'P')
+                return (1);
+            count_obj(game, i, j);
             i++;
         }
         j++;
     }
     if (game->player_len != 1 || game->col_len < 1 || \
-        game->exit_len != 1)
+        game->exit_len != 1 || game->emy_len > 1)
         return (1);
     return (0);
 }
@@ -73,7 +77,10 @@ void    map_check(t_game *game, char *map)
     if (game->map_wid < 1 || game->map_heg < 2)
         exit_map_error(game);
     if (check(game))
+    {
+        ft_printf("check(game)\n");
         exit_map_error(game);
+    }
     flood_fill(game);
 }
 
@@ -87,7 +94,10 @@ void    map_init(t_game *game)
     map = NULL;
     fd = open(game->path_map, O_RDONLY);
     if (fd == -1)
-        exit_map_error(game);
+    {
+        ft_printf("Map path not found\n");
+        exit(0);
+    }
     while ((readd = get_next_line(fd)))
     {
         if (!map)
