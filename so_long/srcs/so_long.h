@@ -76,6 +76,7 @@ void    map_init(t_game *game);
 void    exit_game(t_game *game);
 void    exit_map_error(t_game *game);
 void    exit_lose(t_game *game);
+void    exit_win(t_game *game);
 int     img_loop(t_game *game);
 void    flood_fill(t_game *game);
 void    moving(t_game *game, int key);

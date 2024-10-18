@@ -5,7 +5,14 @@ void    check_position(t_game *game)
     if (game->emy_y == game->player_y && \
         game->emy_x == game->player_x)
         exit_lose(game);
-    
+    if (game->map[game->player_y][game->player_x] == 'C')
+    {
+        game->map[game->player_y][game->player_x] = '0';
+        game->col_len--;
+    }
+    if (game->map[game->player_y][game->player_x] == 'E' && \
+        game->col_len == 0)
+        exit_win(game);
 }
 
 void    check_and_put(t_game *game, int j, int i, int x, int y)
@@ -21,6 +28,12 @@ void    check_and_put(t_game *game, int j, int i, int x, int y)
     if (game->map[j][i] == 'C')
         mlx_put_image_to_window(game->mlx, game->mlx_win, \
             game->mlx_col, x, y);
+    if (game->map[j][i] == 'E')
+    {
+        if (game->col_len == 0)
+            mlx_put_image_to_window(game->mlx, game->mlx_win, \
+            game->mlx_exit, x, y);
+    }
 }
 
 void    loop_bg_wall(t_game *game)
