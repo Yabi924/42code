@@ -1,5 +1,23 @@
 #include "so_long.h"
 
+void    del_img(t_game *game)
+{
+    if (game->mlx_nijika)
+        mlx_destroy_image(game->mlx, game->mlx_nijika);
+    if (game->mlx_ryo)
+        mlx_destroy_image(game->mlx, game->mlx_ryo);
+    if (game->mlx_bg)
+        mlx_destroy_image(game->mlx, game->mlx_bg);
+    if (game->mlx_col)
+        mlx_destroy_image(game->mlx, game->mlx_col);
+    if (game->mlx_exit)
+        mlx_destroy_image(game->mlx, game->mlx_exit);
+    if (game->mlx_wall)
+        mlx_destroy_image(game->mlx, game->mlx_wall);
+    if (game->mlx_win)
+        mlx_destroy_window(game->mlx, game->mlx_win);
+}
+
 void    free_map(t_game *game)
 {
     int i;
@@ -18,6 +36,7 @@ void    free_map(t_game *game)
             free(game->map[i++]);
         free(game->map);
     }
+    // del_img(game);
 }
 
 void    exit_game(t_game *game)

@@ -17,7 +17,8 @@ SRC = srcs/main.c \
 	srcs/map_handle.c \
 	srcs/exit.c \
 	srcs/img_loop.c \
-	srcs/flood_fill.c
+	srcs/flood_fill.c \
+	srcs/moving.c
 
 OBJ = $(SRC:srcs/%.c=srcs/%.o)
 

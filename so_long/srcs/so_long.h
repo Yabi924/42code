@@ -39,18 +39,14 @@ typedef struct s_game
     void    *mlx_col;
     void    *mlx_exit;
     void    *mlx_nijika;
-    void    *mlx_nijika2;
     void    *mlx_ryo;
-    void    *mlx_ryo2;
     void    *mlx_wall;
 
     char    *path_bg;
     char    *path_col;
     char    *path_exit;
     char    *path_nijika;
-    char    *path_nijika2;
     char    *path_ryo;
-    char    *path_ryo2;
     char    *path_wall;
 
     char    *path_map;
@@ -71,6 +67,8 @@ typedef struct s_game
     int     emy_y;
     int     col_len;
     int     exit_len;
+
+    int     animation_count;
 }       t_game;
 
 void    map_init(t_game *game);
@@ -78,5 +76,6 @@ void    exit_game(t_game *game);
 void    exit_map_error(t_game *game);
 int     img_loop(t_game *game);
 void    flood_fill(t_game *game);
+void    moving(t_game *game, int key);
 
 #endif

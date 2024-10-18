@@ -26,6 +26,12 @@ void    count(t_game *game, int i, int j)
         game->player_y = j;
         game->player_len++;
     }
+    if (game->arr_map[j][i] == 'A')
+    {
+        game->emy_x = i;
+        game->emy_y = j;
+        game->emy_len++;
+    }
     if (game->arr_map[j][i] == 'C')
         game->col_len++;
     if (game->arr_map[j][i] == 'E')

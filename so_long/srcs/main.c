@@ -4,6 +4,10 @@ int    key_handler(int key, t_game *game)
 {
     if (key == esc)
         exit_game(game);
+    else if (key == w_key || key == a_key || key == s_key || \
+        key == d_key || key == left_key || key == right_key || \
+        key == down_key || key == up_key)
+        moving(game, key);
     return (0);
 }
 
@@ -36,6 +40,7 @@ void game_init(t_game *game, char *map)
     game->player_y = 0;
     game->col_len = 0;
     game->exit_len = 0;
+    game->animation_count = 0;
     img_init(game);
     map_init(game);
 }
