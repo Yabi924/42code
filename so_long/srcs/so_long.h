@@ -55,6 +55,7 @@ typedef struct s_game
 
     char    *path_map;
     char    **arr_map;
+    char    **map;
     int     map_heg;
     int     map_wid;
 

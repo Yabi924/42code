@@ -21,7 +21,6 @@ void    img_init(t_game *game)
     game->path_wall = "./sprites/wall.xpm";
     game->mlx_wall = mlx_xpm_file_to_image(game->mlx, game->path_wall,\
          &game->img_size, &game->img_size);
-         
 }
 
 void game_init(t_game *game, char *map)

@@ -62,6 +62,7 @@ void    map_check(t_game *game, char *map)
     if (*map == '\0')
         exit_map_error(game);
     game->arr_map = ft_split(map, '\n');
+    game->map = ft_split(map, '\n');
     game->map_wid = check_wid_same(game->arr_map);
     if (game->map_wid < 1 || game->map_heg < 2)
         exit_map_error(game);
