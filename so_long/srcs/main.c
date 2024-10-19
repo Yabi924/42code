@@ -1,41 +1,13 @@
 #include "so_long.h"
 
-void	moving(t_game *game, int key)
-{
-	if (key == W_KEY || key == UP_KEY)
-	{
-		if (game->map[game->player_y - 1][game->player_x] != '1')
-			game->player_y--;
-		game->move_count++;
-	}
-	else if (key == A_KEY || key == LEFT_KEY)
-	{
-		if (game->map[game->player_y][game->player_x - 1] != '1')
-			game->player_x--;
-		game->move_count++;
-	}
-	else if (key == S_KEY || key == DOWN_KEY)
-	{
-		if (game->map[game->player_y + 1][game->player_x] != '1')
-			game->player_y++;
-		game->move_count++;
-	}
-	else if (key == D_KEY || key == RIGHT_KEY)
-	{
-		if (game->map[game->player_y][game->player_x + 1] != '1')
-			game->player_x++;
-		game->move_count++;
-	}
-}
-
 int	key_handler(int key, t_game *game)
 {
 	if (key == ESC)
-		exit_game(game);
+		exit_game(game, -888);
 	else if (key == W_KEY || key == A_KEY || key == S_KEY || \
 		key == D_KEY || key == LEFT_KEY || key == RIGHT_KEY || \
 		key == DOWN_KEY || key == UP_KEY)
-		moving(game, key);
+		player_move(game, key);
 	return (0);
 }
 
@@ -73,6 +45,8 @@ void	game_init(t_game *game, char *map)
 	game->exit_len = 0;
 	game->animation_count = 0;
 	game->move_count = 0;
+	game->a_move_count = 0;
+	game->random = 0;
 	img_init(game);
 	map_init(game);
 }

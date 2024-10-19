@@ -1,20 +1,5 @@
 #include "so_long.h"
 
-void	check_position(t_game *game)
-{
-	if (game->emy_y == game->player_y && \
-		game->emy_x == game->player_x)
-		exit_lose(game);
-	if (game->map[game->player_y][game->player_x] == 'C')
-	{
-		game->map[game->player_y][game->player_x] = '0';
-		game->col_len--;
-	}
-	if (game->map[game->player_y][game->player_x] == 'E' && \
-		game->col_len == 0)
-		exit_win(game);
-}
-
 void	check_and_put(t_game *game, char c, int x, int y)
 {
 	x *= 64;
@@ -55,6 +40,16 @@ void	loop_bg_wall(t_game *game)
 		y++;
 	}
 }
+void	loop_emy(t_game *game)
+{
+	static int frame = 0;
+
+	game->random++;
+	game->random = game->random * game->random + (game->move_count + game->a_move_count + 1);
+	if (frame % 4 == 0)
+		emy_move(game);
+	frame++;
+}
 
 void	loop_char(t_game *game)
 {
@@ -85,6 +80,7 @@ void	loop_char(t_game *game)
 
 int	img_loop(t_game *game)
 {
+	char *move_count;
 	loop_bg_wall(game);
 	loop_char(game);
 	check_position(game);
@@ -95,6 +91,12 @@ int	img_loop(t_game *game)
 		game->mlx_ryo, game->emy_x * 64, game->emy_y * 64);
 	mlx_string_put(game->mlx, game->mlx_win, 1 * 64, 64, \
 		0xFF0000, "Moving Count:");
+	move_count = ft_itoa(game->move_count);
+	mlx_string_put(game->mlx, game->mlx_win, 1 * 64, 200, \
+		4444444, move_count);
+	free(move_count);
+	if (game->emy_len)
+		loop_emy(game);
 	game->animation_count++;
 	return (0);
 }

@@ -70,15 +70,19 @@ typedef struct s_game
 
 	int		animation_count;
 	int		move_count;
+	int		a_move_count;
+	int		random;
 }	t_game;
 
 void	map_init(t_game *game);
-void	exit_game(t_game *game);
+void	flood_fill(t_game *game);
+void	exit_game(t_game *game, int fd);
 void	exit_map_error(t_game *game);
 void	exit_lose(t_game *game);
 void	exit_win(t_game *game);
+void	player_move(t_game *game, int key);
 int		img_loop(t_game *game);
-void	flood_fill(t_game *game);
-void	moving(t_game *game, int key);
+void	check_position(t_game *game);
+void    emy_move(t_game *game);
 
 #endif

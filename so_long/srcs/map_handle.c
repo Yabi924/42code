@@ -77,10 +77,7 @@ void	map_check(t_game *game, char *map)
 	if (game->map_wid < 1 || game->map_heg < 2)
 		exit_map_error(game);
 	if (check(game))
-	{
-		ft_printf("check(game)\n");
 		exit_map_error(game);
-	}
 	flood_fill(game);
 }
 
@@ -93,11 +90,7 @@ void	map_init(t_game *game)
 
 	map = NULL;
 	fd = open(game->path_map, O_RDONLY);
-	if (fd == -1)
-	{
-		ft_printf("Map path not found\n");
-		exit(0);
-	}
+	exit_game(game, fd);
 	while ((readd = get_next_line(fd)))
 	{
 		if (!map)
@@ -111,8 +104,6 @@ void	map_init(t_game *game)
 		game->map_heg++;
 		free(readd);
 	}
-	close(fd);
 	map_check(game, map);
-	if (map)
-		free(map);
+	free(map);
 }

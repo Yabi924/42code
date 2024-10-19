@@ -38,10 +38,19 @@ void	free_map(t_game *game)
 	}
 }
 
-void	exit_game(t_game *game)
+void	exit_game(t_game *game, int fd)
 {
-	free_map(game);
-	exit(0);
+	if (fd == -1)
+	{
+		ft_printf("Map path not found\n");
+		exit(0);
+	}
+	if (fd == -888)
+	{
+		ft_printf("Exit Game\n");
+		free_map(game);
+		exit(0);
+	}
 }
 
 void	exit_map_error(t_game *game)
