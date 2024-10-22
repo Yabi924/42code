@@ -57,19 +57,19 @@ void	loop_char(t_game *game)
 	{
 		game->path_nijika = "./sprites/nina.xpm";
 		game->path_ryo = "./sprites/rotania.xpm";
-		if (game->mlx_nijika)
-			mlx_destroy_image(game->mlx, game->mlx_nijika);
-		if (game->mlx_ryo)
-			mlx_destroy_image(game->mlx, game->mlx_ryo);
+		// if (game->mlx_nijika)
+		// 	mlx_destroy_image(game->mlx, game->mlx_nijika);
+		// if (game->mlx_ryo)
+		// 	mlx_destroy_image(game->mlx, game->mlx_ryo);
 	}
 	if (game->animation_count % 32 >= 16)
 	{
 		game->path_nijika = "./sprites/nina2.xpm";
 		game->path_ryo = "./sprites/rotania2.xpm";
-		if (game->mlx_nijika)
-			mlx_destroy_image(game->mlx, game->mlx_nijika);
-		if (game->mlx_ryo)
-			mlx_destroy_image(game->mlx, game->mlx_ryo);
+		// if (game->mlx_nijika)
+		// 	mlx_destroy_image(game->mlx, game->mlx_nijika);
+		// if (game->mlx_ryo)
+		// 	mlx_destroy_image(game->mlx, game->mlx_ryo);
 	}
 	game->mlx_nijika = mlx_xpm_file_to_image(game->mlx, \
 		game->path_nijika, &game->img_size, &game->img_size);
@@ -89,10 +89,10 @@ int	img_loop(t_game *game)
 	if (game->emy_len == 1)
 		mlx_put_image_to_window(game->mlx, game->mlx_win, \
 		game->mlx_ryo, game->emy_x * 64, game->emy_y * 64);
-	mlx_string_put(game->mlx, game->mlx_win, 1 * 64, 64, \
-		0xFF0000, "Moving Count:");
+	mlx_string_put(game->mlx, game->mlx_win, 1, 16, \
+		4444444, "Moving Count:");
 	move_count = ft_itoa(game->move_count);
-	mlx_string_put(game->mlx, game->mlx_win, 1 * 64, 200, \
+	mlx_string_put(game->mlx, game->mlx_win, 130, 16, \
 		4444444, move_count);
 	free(move_count);
 	if (game->emy_len)
