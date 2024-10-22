@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   moving.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yyan-bin <yyan-bin@student.42kl.edu.my>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/22 19:20:18 by yyan-bin          #+#    #+#             */
+/*   Updated: 2024/10/22 19:20:20 by yyan-bin         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 void	check_position(t_game *game)
@@ -43,12 +55,12 @@ void	player_move(t_game *game, int key)
 	}
 }
 
-unsigned int randomizer(t_game *game)
+unsigned int	randomizer(t_game *game)
 {
-    unsigned int random;
+	unsigned int	random;
 
-    random = (game->random * 1103515245 + 12345) % 2147483648;
-    return (random % 4);
+	random = (game->random * 1103515245 + 12345) % 2147483648;
+	return (random % 4);
 }
 
 void	stoping_handler(t_game *game, int *m)
@@ -75,26 +87,26 @@ void	stoping_handler(t_game *game, int *m)
 	}
 }
 
-void    emy_move(t_game *game)
+void	emy_move(t_game *game)
 {
-    int m;
-	static int stoping = 0;
+	int			m;
+	static int	stoping = 0;
 
 	game->a_move_count++;
-    m = randomizer(game);
+	m = randomizer(game);
 	if (stoping == 2)
 	{
 		stoping_handler(game, &m);
 		stoping = 0;
 	}
-    if (m == 3 && game->map[game->emy_y][game->emy_x + 1] != '1')
-        game->emy_x++;
+	if (m == 3 && game->map[game->emy_y][game->emy_x + 1] != '1')
+		game->emy_x++;
 	else if (m == 2 && game->map[game->emy_y][game->emy_x - 1] != '1')
-        game->emy_x--;
-    else if (m == 1 && game->map[game->emy_y - 1][game->emy_x] != '1')
-        game->emy_y--;
-    else if (m == 0 && game->map[game->emy_y + 1][game->emy_x] != '1')
-        game->emy_y++;
+		game->emy_x--;
+	else if (m == 1 && game->map[game->emy_y - 1][game->emy_x] != '1')
+		game->emy_y--;
+	else if (m == 0 && game->map[game->emy_y + 1][game->emy_x] != '1')
+		game->emy_y++;
 	else
 		stoping++;
 }

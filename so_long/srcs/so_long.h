@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yyan-bin <yyan-bin@student.42kl.edu.my>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/22 19:26:21 by yyan-bin          #+#    #+#             */
+/*   Updated: 2024/10/22 19:26:23 by yyan-bin         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
@@ -72,6 +84,7 @@ typedef struct s_game
 	int		move_count;
 	int		a_move_count;
 	int		random;
+	int		fd;
 }	t_game;
 
 void	map_init(t_game *game);
@@ -83,6 +96,6 @@ void	exit_win(t_game *game);
 void	player_move(t_game *game, int key);
 int		img_loop(t_game *game);
 void	check_position(t_game *game);
-void    emy_move(t_game *game);
+void	emy_move(t_game *game);
 
 #endif

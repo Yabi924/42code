@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_handle.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yyan-bin <yyan-bin@student.42kl.edu.my>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/22 19:18:44 by yyan-bin          #+#    #+#             */
+/*   Updated: 2024/10/22 19:19:00 by yyan-bin         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 int	check_wid_same(char **s)
@@ -91,7 +103,8 @@ void	map_init(t_game *game)
 	map = NULL;
 	fd = open(game->path_map, O_RDONLY);
 	exit_game(game, fd);
-	while ((readd = get_next_line(fd)))
+	readd = get_next_line(fd);
+	while (readd)
 	{
 		if (!map)
 			map = ft_strdup(readd);
@@ -103,6 +116,7 @@ void	map_init(t_game *game)
 		}
 		game->map_heg++;
 		free(readd);
+		readd = get_next_line(fd);
 	}
 	map_check(game, map);
 	free(map);

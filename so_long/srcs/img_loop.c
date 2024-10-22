@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   img_loop.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yyan-bin <yyan-bin@student.42kl.edu.my>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/22 19:16:43 by yyan-bin          #+#    #+#             */
+/*   Updated: 2024/10/22 19:16:44 by yyan-bin         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 void	check_and_put(t_game *game, char c, int x, int y)
@@ -40,12 +52,14 @@ void	loop_bg_wall(t_game *game)
 		y++;
 	}
 }
+
 void	loop_emy(t_game *game)
 {
-	static int frame = 0;
+	static int	frame = 0;
 
 	game->random++;
-	game->random = game->random * game->random + (game->move_count + game->a_move_count + 1);
+	game->random = game->random * game->random + \
+		(game->move_count + game->a_move_count + 1);
 	if (frame % 4 == 0)
 		emy_move(game);
 	frame++;
@@ -55,21 +69,13 @@ void	loop_char(t_game *game)
 {
 	if (game->animation_count % 32 < 16)
 	{
-		game->path_nijika = "./sprites/nina.xpm";
-		game->path_ryo = "./sprites/rotania.xpm";
-		// if (game->mlx_nijika)
-		// 	mlx_destroy_image(game->mlx, game->mlx_nijika);
-		// if (game->mlx_ryo)
-		// 	mlx_destroy_image(game->mlx, game->mlx_ryo);
+		game->path_nijika = "./sprites/nina1.xpm";
+		game->path_ryo = "./sprites/rotania1.xpm";
 	}
 	if (game->animation_count % 32 >= 16)
 	{
 		game->path_nijika = "./sprites/nina2.xpm";
 		game->path_ryo = "./sprites/rotania2.xpm";
-		// if (game->mlx_nijika)
-		// 	mlx_destroy_image(game->mlx, game->mlx_nijika);
-		// if (game->mlx_ryo)
-		// 	mlx_destroy_image(game->mlx, game->mlx_ryo);
 	}
 	game->mlx_nijika = mlx_xpm_file_to_image(game->mlx, \
 		game->path_nijika, &game->img_size, &game->img_size);
@@ -80,7 +86,8 @@ void	loop_char(t_game *game)
 
 int	img_loop(t_game *game)
 {
-	char *move_count;
+	char	*move_count;
+
 	loop_bg_wall(game);
 	loop_char(game);
 	check_position(game);

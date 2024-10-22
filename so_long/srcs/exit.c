@@ -1,22 +1,16 @@
-#include "so_long.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   exit.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yyan-bin <yyan-bin@student.42kl.edu.my>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/22 19:14:56 by yyan-bin          #+#    #+#             */
+/*   Updated: 2024/10/22 19:15:02 by yyan-bin         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-// void    del_img(t_game *game)
-// {
-//     if (game->mlx_nijika)
-//         mlx_destroy_image(game->mlx, game->mlx_nijika);
-//     if (game->mlx_ryo)
-//         mlx_destroy_image(game->mlx, game->mlx_ryo);
-//     if (game->mlx_bg)
-//         mlx_destroy_image(game->mlx, game->mlx_bg);
-//     if (game->mlx_col)
-//         mlx_destroy_image(game->mlx, game->mlx_col);
-//     if (game->mlx_exit)
-//         mlx_destroy_image(game->mlx, game->mlx_exit);
-//     if (game->mlx_wall)
-//         mlx_destroy_image(game->mlx, game->mlx_wall);
-//     if (game->mlx_win)
-//         mlx_destroy_window(game->mlx, game->mlx_win);
-// }
+#include "so_long.h"
 
 void	free_map(t_game *game)
 {
