@@ -50,15 +50,15 @@ typedef struct s_game
 	void	*mlx_bg;
 	void	*mlx_col;
 	void	*mlx_exit;
-	void	*mlx_nijika;
-	void	*mlx_ryo;
+	void	*mlx_player;
+	void	*mlx_enemy;
 	void	*mlx_wall;
 
 	char	*path_bg;
 	char	*path_col;
 	char	*path_exit;
-	char	*path_nijika;
-	char	*path_ryo;
+	char	*path_player;
+	char	*path_enemy;
 	char	*path_wall;
 
 	char	*path_map;

@@ -34,7 +34,7 @@ all: $(NAME)
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) $(LIBS) $(LFLAGS) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJ) $(LIBS) $(LFLAGS) -o $(NAME)
 	@echo "Hello! $(NAME)"
 
 ft:
