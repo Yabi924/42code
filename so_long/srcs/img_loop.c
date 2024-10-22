@@ -60,7 +60,7 @@ void	loop_emy(t_game *game)
 	game->random++;
 	game->random = game->random * game->random + \
 		(game->move_count + game->a_move_count + 1);
-	if (frame % 20 == 0)
+	if (frame % 8 == 0)
 		emy_move(game);
 	frame++;
 }
