@@ -1,7 +1,12 @@
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
 NAME = push_swap
 
-SRCS = src/main.c
+SRCS = src/main.c \
+	src/swap.c \
+	src/error.c \
+	src/init_arr.c \
+	src/ft_atoi_overint.c
+
 OBJS = $(SRCS:src/%.c=src/%.o)
 
 LIBS = $(PATH_LIB) -L./lib/ft_printf -lftprintf -L./lib/libft -lft
@@ -10,7 +15,6 @@ LIBFT_PATH = ./lib/libft/libft.a
 PF_PATH = ./lib/ft_printf/libftprintf.a
 
 PATH_LIB = $(LIBFT_PATH) $(PF_PATH)
-
 
 all: $(NAME)
 
