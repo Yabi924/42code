@@ -37,6 +37,7 @@ void    print_ab(t_stack *stack)
 void    test(t_stack *stack)
 {
     print_ab(stack);
-    pb(stack);
+    // pb(stack);
+    sa(stack);
     print_ab(stack);
 }
