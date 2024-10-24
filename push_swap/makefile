@@ -5,8 +5,8 @@ SRCS = src/main.c \
 	src/swap.c \
 	src/error.c \
 	src/init_arr.c \
-	src/ft_atoi_overint.c \
 	src/checking.c \
+	src/utails.c \
 	src/push_swap.c \
 	src/test.c
 

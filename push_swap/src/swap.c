@@ -2,34 +2,19 @@
 
 void    sa(t_stack *stack)
 {
-    int temp;
-
-    temp = stack->stack_a[0];
-    stack->stack_a[0] = stack->stack_a[1];
-    stack->stack_a[1] = temp;
     ft_printf("sa\n");
 }
 
 void    sb(t_stack *stack)
 {
-    int temp;
-
-    temp = stack->stack_b[0];
-    stack->stack_b[0] = stack->stack_b[1];
-    stack->stack_b[1] = temp;
+    swap_index(stack->stack_b, 0, 1);
     ft_printf("sb\n");
 }
 
 void    ss(t_stack *stack)
 {
-    int temp;
-
-    temp = stack->stack_a[0];
-    stack->stack_a[0] = stack->stack_a[1];
-    stack->stack_a[1] = temp;
-    temp = stack->stack_b[0];
-    stack->stack_b[0] = stack->stack_b[1];
-    stack->stack_b[1] = temp;
+    swap_index(stack->stack_a, 0, 1);
+    swap_index(stack->stack_b, 0, 1);
     ft_printf("ss\n");
 }
 

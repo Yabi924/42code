@@ -23,7 +23,6 @@ int     check_double(t_stack *stack, int f);
 int     check_arr_number_ii(char **s);
 void    check_arr_number(t_stack *stack, char **s);
 
-int     ft_atoi_overint(const char *str, int *mark);
 void    error(t_stack *stack,int f);
 void    free_arr(char **arr);
 void    error_free_arr(t_stack *stack, char **arr);
@@ -35,6 +34,10 @@ void    ss(t_stack *stack);
 void    pb(t_stack *stack);
 void    pa(t_stack *stack);
 void    pb(t_stack *stack);
+
+//utails
+void    swap_index(int *n, int i1, int i2);
+int     ft_atoi_overint(const char *str, int *mark);
 
 //test
 void    test(t_stack *stack);
