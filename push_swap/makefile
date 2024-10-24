@@ -5,7 +5,10 @@ SRCS = src/main.c \
 	src/swap.c \
 	src/error.c \
 	src/init_arr.c \
-	src/ft_atoi_overint.c
+	src/ft_atoi_overint.c \
+	src/checking.c \
+	src/push_swap.c \
+	src/test.c
 
 OBJS = $(SRCS:src/%.c=src/%.o)
 
@@ -21,6 +24,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	@gcc $(CFLAGS) -o $(NAME) $(OBJS) $(PATH_LIB) $(LIB_FLAG)
 	@echo "Hello push_swap"
+	@make clean
 
 %.o: %.c
 	@gcc $(CFLAGS) -c $< -o $@

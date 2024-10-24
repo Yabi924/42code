@@ -29,65 +29,61 @@ int count_arr(char *str)
     return (len);
 }
 
-void arr_handler(t_stack *stack, char *s)
-{
-    int arr_len;
-
-    arr_len = count_arr(s);
-    ft_printf("arr_len:%d\n", arr_len);
-    if (arr_len && !(arr_len < 3))
-    {
-        stack->stack_a = 0;
-    }
-    else
-        error(1);
-}
-
-int check(t_stack *stack)
+int number_to_stack_a(t_stack *stack, char **s, int f)
 {
     int i;
     int j;
-    int db;
-
-    i = 0;
-    while (i < stack->stack_len)
-    {
-        db = 0;
-        j = 0;
-        while (j < stack->stack_len)
-        {
-            if (stack->stack_a[i] == stack->stack_a[j])
-                db++;
-            j++;
-        }
-        if (db > 1)
-            return (1);
-        i++;
-    }
-    return (0);
-}
-
-void    v_handler(t_stack *stack, char **argv)
-{
-    int i;
-    int j;
-    int mark;
 
     i = 0;
     j = 1;
-    mark = 0;
+    if (f)
+        j--;
+    while (i < stack->stack_len)
+    {
+        stack->stack_a[i++] = ft_atoi_overint(s[j++], &stack->mark);
+        if (stack->mark && f == 1)
+            return (0);
+        else if (stack->mark && f == 0)
+            error(stack, 2);
+    }
+    return (1);
+}
+
+void init_v(t_stack *stack, char *s)
+{
+    char    **arr_num;
+
+    stack->stack_len = count_arr(s);
+    if (stack->stack_len == 0 && (stack->stack_len < 3))
+        error(stack, 1);
     stack->stack_a = (int *)malloc(sizeof(int) * (stack->stack_len));
     stack->stack_b = (int *)malloc(sizeof(int) * (stack->stack_len));
     if (!stack->stack_a || !stack->stack_b)
-        error(2);
-    while (i < stack->stack_len)
-    {
-        stack->stack_a[i++] = ft_atoi_overint(argv[j++], &mark);
-        if (mark)
-            error(3);
-    }
+        error(stack, 1);
+    arr_num = ft_split(s, ' ');
+    if (check_arr_number_ii(arr_num))
+        error_free_arr(stack, arr_num);
+    if (!number_to_stack_a(stack, arr_num, 1))
+        error_free_arr(stack, arr_num);
+    if (check_double(stack, 1))
+        error_free_arr(stack, arr_num);
+    else
+        push_swap(stack);
+    free_arr(arr_num);
+}
+
+void    init_arr(t_stack *stack, char **argv)
+{
+    int i;
+
     i = 0;
-    while (i < stack->stack_len)
-        ft_printf("%d\n", stack->stack_a[i++]);
-    ft_printf("check:%d\n", check(stack));
+    stack->stack_a = (int *)malloc(sizeof(int) * (stack->stack_len));
+    stack->stack_b = (int *)malloc(sizeof(int) * (stack->stack_len));
+    if (!stack->stack_a || !stack->stack_b)
+        error(stack, 1);
+    if (number_to_stack_a(stack, argv, 0))
+    {
+        check_double(stack, 0);
+        push_swap(stack);
+    }
 }

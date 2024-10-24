@@ -1,20 +1,26 @@
 #include "push_swap.h"
 
-void    init_arr(t_stack *stack, int len)
+void    init_stack(t_stack *stack, int len)
 {
-    stack->stack_a = 0;
-    stack->stack_b = 0;
+    stack->stack_a = NULL;
+    stack->stack_b = NULL;
     stack->stack_len = len;
+    stack->a_len = len;
+    stack->b_len = 0;
+    stack->mark = 0;
 }
 
 int main(int argc, char **argv)
 {
     t_stack stack;
 
-    init_arr(&stack, argc - 1);
+    init_stack(&stack, argc - 1);
     if (argc == 2)
-        arr_handler(&stack, argv[1]);
+        init_v(&stack, argv[1]);
     else if (argc > 3)
-        v_handler(&stack, argv);
-    return 0;
+    {
+        check_arr_number(&stack, argv);
+        init_arr(&stack, argv);
+    }
+    return (0);
 }
