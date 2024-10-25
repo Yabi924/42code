@@ -40,7 +40,7 @@ void check_arr_number(t_stack *stack, char **s)
             if (s[j][i] != '-' && s[j][i] != '+' && \
                 !ft_isdigit(s[j][i]))
                 error(stack, 1);
-            if ((s[j][i] == '-' || s[j][i] == '+') &&
+            if ((s[j][i] == '-' || s[j][i] == '+') && \
                 !ft_isdigit(s[j][i + 1]))
                 error(stack, 1);
             i++;
@@ -63,7 +63,7 @@ int check_arr_number_ii(char **s)
             if (s[j][i] != '-' && s[j][i] != '+' && \
                 !ft_isdigit(s[j][i]))
                 return (1);
-            if ((s[j][i] == '-' || s[j][i] == '+') &&
+            if ((s[j][i] == '-' || s[j][i] == '+') && \
                 !ft_isdigit(s[j][i + 1]))
                 return (1);
             i++;

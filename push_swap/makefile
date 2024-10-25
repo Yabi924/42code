@@ -24,7 +24,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	@gcc $(CFLAGS) -o $(NAME) $(OBJS) $(PATH_LIB) $(LIB_FLAG)
 	@echo "Hello push_swap"
-	@make clean
+	@make clean --no-print-directory
 
 %.o: %.c
 	@gcc $(CFLAGS) -c $< -o $@
@@ -51,3 +51,5 @@ fcleanl:
 	@make fclean -C ./lib/ft_printf --no-print-directory
 	@make fclean -C ./lib/libft --no-print-directory
 	@echo "fclean libft & ft_printf"
+
+re: fclean all

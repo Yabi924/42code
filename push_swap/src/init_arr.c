@@ -46,6 +46,10 @@ int number_to_stack_a(t_stack *stack, char **s, int f)
         else if (stack->mark && f == 0)
             error(stack, 2);
     }
+    if (i < 4 && f == 1)
+        return (0);
+    else if (i < 4 && f == 0)
+        error(stack, 2);
     return (1);
 }
 
@@ -74,9 +78,6 @@ void init_v(t_stack *stack, char *s)
 
 void    init_arr(t_stack *stack, char **argv)
 {
-    int i;
-
-    i = 0;
     stack->stack_a = (int *)malloc(sizeof(int) * (stack->stack_len));
     stack->stack_b = (int *)malloc(sizeof(int) * (stack->stack_len));
     if (!stack->stack_a || !stack->stack_b)

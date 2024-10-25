@@ -2,6 +2,7 @@
 
 void    sa(t_stack *stack)
 {
+    swap_index(stack->stack_a, 0, 1);
     ft_printf("sa\n");
 }
 

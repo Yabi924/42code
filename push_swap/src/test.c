@@ -40,4 +40,10 @@ void    test(t_stack *stack)
     // pb(stack);
     sa(stack);
     print_ab(stack);
+
+
+
+    free(stack->stack_a);
+    free(stack->stack_b);
+    exit(0);
 }
