@@ -3,6 +3,8 @@ NAME = push_swap
 
 SRCS = src/main.c \
 	src/swap.c \
+	src/swap2.c \
+	src/swap3.c \
 	src/error.c \
 	src/init_arr.c \
 	src/checking.c \

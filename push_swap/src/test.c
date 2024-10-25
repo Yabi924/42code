@@ -18,8 +18,8 @@ void    print_temp(int *n, int len)
 void    print_a(t_stack *stack)
 {
     int i = 0;
-    ft_printf("b:");
-    while (i < stack->stack_len)
+    ft_printf("a:");
+    while (i < stack->a_len)
     {
         if (stack->stack_a[i] < -100000000)
             ft_printf("\\0 ");
@@ -33,7 +33,8 @@ void    print_a(t_stack *stack)
 void    print_b(t_stack *stack)
 {
     int i = 0;
-    while (i < stack->stack_len)
+    ft_printf("b:");
+    while (i < stack->b_len)
     {
         if (stack->stack_b[i] < -100000000)
             ft_printf("\\0 ");
@@ -53,11 +54,18 @@ void    print_ab(t_stack *stack)
 void    test(t_stack *stack)
 {
     ft_printf("a:%d b:%d\n", stack->a_len, stack->b_len);
+    pb(stack);
+    pb(stack);
+    pb(stack);
+    pb(stack);
+    pb(stack);
+    ft_printf("\n");
     print_ab(stack);
-    // pb(stack);
-    sa(stack);
-    print_ab(stack);
+    ft_printf("\n");
 
+    rr(stack);
+    ft_printf("\n");
+    print_ab(stack);
 
 
     free(stack->stack_a);
