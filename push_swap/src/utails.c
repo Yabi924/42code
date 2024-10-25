@@ -27,11 +27,28 @@ int	ft_atoi_overint(const char *str, int *mark)
 	return (save * sign);
 }
 
-void    swap_index(int *n, int i1, int i2)
+void    index_swap(int *n, int i1, int i2)
 {
     int temp;
 
     temp = n[i1];
     n[i1] = n[i2];
     n[i2] = temp;
+}
+
+int	*copy_stack(int *target, int len)
+{
+	int	i;
+	int	*arr;
+
+	i = 0;
+	arr = (int *)malloc(sizeof(int) * len);
+	if (!arr)
+		return (NULL);
+	while (i < len)
+	{
+		arr[i] = target[i];
+		i++;
+	}
+	return (arr);
 }

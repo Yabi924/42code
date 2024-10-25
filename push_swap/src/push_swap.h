@@ -36,12 +36,14 @@ void    pa(t_stack *stack);
 void    pb(t_stack *stack);
 
 //utails
-void    swap_index(int *n, int i1, int i2);
+void    index_swap(int *n, int i1, int i2);
 int     ft_atoi_overint(const char *str, int *mark);
+int     *copy_stack(int *target, int len);
 
 //test
 void    test(t_stack *stack);
 void    print_a(t_stack *stack);
 void    print_b(t_stack *stack);
+void    print_temp(int *n, int len);
 
 #endif

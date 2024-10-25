@@ -1,8 +1,24 @@
 #include "push_swap.h"
 
+void    print_temp(int *n, int len)
+{
+    int i = 0;
+    ft_printf("a:");
+    while (i < len)
+    {
+        if (n[i] < -100000000)
+            ft_printf("\\0 ");
+        else
+            ft_printf("%d ", n[i]);
+        i++;
+    }
+    ft_printf("\n");
+}
+
 void    print_a(t_stack *stack)
 {
     int i = 0;
+    ft_printf("b:");
     while (i < stack->stack_len)
     {
         if (stack->stack_a[i] < -100000000)
@@ -36,6 +52,7 @@ void    print_ab(t_stack *stack)
 
 void    test(t_stack *stack)
 {
+    ft_printf("a:%d b:%d\n", stack->a_len, stack->b_len);
     print_ab(stack);
     // pb(stack);
     sa(stack);
