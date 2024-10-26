@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-int check_double(t_stack *stack, int f)
+int check_double(t_stack *stack)
 {
     int i;
     int j;
@@ -17,39 +17,14 @@ int check_double(t_stack *stack, int f)
                 db++;
             j++;
         }
-        if (db > 1 && f != 1)
-            error(stack, 2);
-        else if (db > 1 && f == 1)
+        if (db > 1)
             return (1);
         i++;
     }
     return (0);
 }
 
-void check_arr_number(t_stack *stack, char **s)
-{
-    int i;
-    int j;
-
-    j = 1;
-    while (s[j])
-    {
-        i = 0;
-        while (s[j][i])
-        {
-            if (s[j][i] != '-' && s[j][i] != '+' && \
-                !ft_isdigit(s[j][i]))
-                error(stack, 1);
-            if ((s[j][i] == '-' || s[j][i] == '+') && \
-                !ft_isdigit(s[j][i + 1]))
-                error(stack, 1);
-            i++;
-        }
-        j++;
-    }
-}
-
-int check_arr_number_ii(char **s)
+int check_arr_number(char **s)
 {
     int i;
     int j;
@@ -71,4 +46,19 @@ int check_arr_number_ii(char **s)
         j++;
     }
     return (0);
+}
+
+int is_shorted(t_stack *stack)
+{
+    int i;
+    i = 0;
+    while (i < stack->a_len - 1)
+    {
+        if (stack->stack_a[i] > stack->stack_a[i + 1])
+            return (0);
+        i++;
+    }
+    if (stack->a_len != stack->stack_len || stack->b_len != 0)
+        return (0);
+    return (1);
 }

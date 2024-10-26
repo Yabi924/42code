@@ -52,3 +52,48 @@ int	*copy_stack(int *target, int len)
 	}
 	return (arr);
 }
+
+void    bb_short(int *arr, int len)
+{
+    int i;
+    int j;
+
+    j = 0;
+    if (!arr)
+        return ;
+    while (j < len - 1)
+    {
+        i = 0;
+        while (i < len - 1)
+        {
+            if (arr[i] > arr[i + 1])
+                index_swap(arr, i, i + 1);
+            i++;
+        }
+        j++;
+    }
+}
+
+void	indexing(t_stack *stack)
+{
+    int *temp;
+    int i;
+	int	j;
+
+    temp = copy_stack(stack->stack_a, stack->a_len);
+    bb_short(temp, stack->a_len);
+    j = 0;
+	while (j < stack->a_len)
+	{
+		i = -1;
+		while (++i < stack->a_len)
+		{
+			if (temp[j] == stack->stack_a[i])
+			{
+				stack->stack_a[i] = j++;
+				break ;
+			}
+		}
+	}
+	free(temp);
+}

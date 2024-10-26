@@ -12,18 +12,28 @@ typedef struct  s_stack
     int b_len;
     int stack_len;
 
-    int mark;
 }   t_stack;
 
+//main
 void    push_swap(t_stack *stack);
+void    hardcode(t_stack *stack);
 
-void    init_v(t_stack *stack, char *s);
+//checking
+void    init_str(t_stack *stack, char *s);
 void    init_arr(t_stack *stack, char **argv);
-int     check_double(t_stack *stack, int f);
-int     check_arr_number_ii(char **s);
-void    check_arr_number(t_stack *stack, char **s);
+void    check(t_stack *stack, int argc, char **argv);
+int     check_double(t_stack *stack);
+int     check_arr_number(char **s);
+int     is_shorted(t_stack *stack);
 
-void    error(t_stack *stack,int f);
+//helper function
+void    index_swap(int *n, int i1, int i2);
+int     ft_atoi_overint(const char *str, int *mark);
+int     *copy_stack(int *target, int len);
+void    indexing(t_stack *stack);
+
+//error
+void    error(t_stack *stack);
 void    free_arr(char **arr);
 void    error_free_arr(t_stack *stack, char **arr);
 
@@ -40,11 +50,6 @@ void    rr(t_stack *stack);
 void    rra(t_stack *stack);
 void    rrb(t_stack *stack);
 void    rrr(t_stack *stack);
-
-//utails
-void    index_swap(int *n, int i1, int i2);
-int     ft_atoi_overint(const char *str, int *mark);
-int     *copy_stack(int *target, int len);
 
 //test
 void    test(t_stack *stack);

@@ -1,28 +1,40 @@
 #include "push_swap.h"
 
+//swap a top with a second
 void    sa(t_stack *stack)
 {
+    if (stack->a_len == 0)
+        return ;
     index_swap(stack->stack_a, 0, 1);
     ft_printf("sa\n");
 }
 
+//swap b top with b second
 void    sb(t_stack *stack)
 {
+    if (stack->b_len == 0)
+        return ;
     index_swap(stack->stack_b, 0, 1);
     ft_printf("sb\n");
 }
 
+//sa + sb
 void    ss(t_stack *stack)
 {
+    if (stack->a_len == 0 || stack->b_len == 0)
+        return ;
     index_swap(stack->stack_a, 0, 1);
     index_swap(stack->stack_b, 0, 1);
     ft_printf("ss\n");
 }
 
+//push b topto a top
 void    pa(t_stack *stack)
 {
     int i;
 
+    if (stack->b_len == 0)
+        return ;
     i = stack->a_len + 1;
     while (--i > 0)
         index_swap(stack->stack_a, i, i - 1);
@@ -35,10 +47,13 @@ void    pa(t_stack *stack)
     ft_printf("pa\n");
 }
 
+//push a top to b top
 void    pb(t_stack *stack)
 {
     int i;
 
+    if (stack->a_len == 0)
+        return ;
     i = stack->b_len + 1;
     while (--i > 0)
         index_swap(stack->stack_b, i, i - 1);

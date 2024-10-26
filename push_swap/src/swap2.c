@@ -6,6 +6,8 @@ void    ra(t_stack *stack)
     int temp;
     int i;
 
+    if (stack->a_len == 0)
+        return ;
     temp = stack->stack_a[0];
     i = -1;
     while (++i < stack->a_len - 1)
@@ -19,6 +21,8 @@ void    rb(t_stack *stack)
     int temp;
     int i;
 
+    if (stack->b_len == 0)
+        return ;
     temp = stack->stack_b[0];
     i = -1;
     while (++i < stack->b_len - 1)
@@ -33,6 +37,8 @@ void    rra(t_stack *stack)
     int temp;
     int i;
 
+    if (stack->a_len == 0)
+        return ;
     temp = stack->stack_a[stack->a_len - 1];
     i = stack->a_len;
     while (--i > 0)
@@ -46,6 +52,8 @@ void    rrb(t_stack *stack)
     int temp;
     int i;
 
+    if (stack->b_len == 0)
+        return ;
     temp = stack->stack_b[stack->b_len - 1];
     i = stack->b_len;
     while (--i > 0)

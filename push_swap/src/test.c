@@ -3,7 +3,7 @@
 void    print_temp(int *n, int len)
 {
     int i = 0;
-    ft_printf("a:");
+    ft_printf("temp:");
     while (i < len)
     {
         if (n[i] < -100000000)
@@ -54,21 +54,10 @@ void    print_ab(t_stack *stack)
 void    test(t_stack *stack)
 {
     ft_printf("a:%d b:%d\n", stack->a_len, stack->b_len);
-    pb(stack);
-    pb(stack);
-    pb(stack);
-    pb(stack);
-    pb(stack);
     ft_printf("\n");
     print_ab(stack);
     ft_printf("\n");
+    ra(stack);
 
-    rr(stack);
-    ft_printf("\n");
     print_ab(stack);
-
-
-    free(stack->stack_a);
-    free(stack->stack_b);
-    exit(0);
 }

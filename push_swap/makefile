@@ -10,6 +10,7 @@ SRCS = src/main.c \
 	src/checking.c \
 	src/utails.c \
 	src/push_swap.c \
+	src/hardcode.c \
 	src/test.c
 
 OBJS = $(SRCS:src/%.c=src/%.o)
@@ -49,7 +50,7 @@ cleanl:
 	@make clean -C ./lib/libft --no-print-directory
 	@echo "clean obj libft & ft_printf"
 
-fcleanl:
+fcleanl: fclean
 	@make fclean -C ./lib/ft_printf --no-print-directory
 	@make fclean -C ./lib/libft --no-print-directory
 	@echo "fclean libft & ft_printf"
