@@ -1,23 +1,5 @@
 #include "push_swap.h"
 
-int count_n(t_stack *stack)
-{
-    int i;
-    int *temp;
-
-    i = 8;
-    temp = copy_stack(stack->stack_a, stack->a_len);
-    bb_sort(temp, stack->a_len);
-    while (i >= 0)
-    {
-        if ((temp[stack->a_len - 1] >> i) & 1)
-            break ;
-        i--;
-    }
-    free(temp);
-    return (i + 1);
-}
-
 int check_bit(int n, int b)
 {
     if ((n >> b) & 1)
@@ -27,22 +9,25 @@ int check_bit(int n, int b)
 
 void    radix_sort(t_stack *stack)
 {
-    // int i;
-    int len;
+    int i;
+    int j;
 
-    // i = 0;
-    len = count_n(stack);
-    printf("a_len:%d %d\n", stack->a_len, len);
-    // while (i <= len)
-    // {
-    //     if (check_bit(stack->stack_a[i], i))
-    //         pb(stack);
-    //     else
-    //         ra(stack);
-    //     while (stack->b_len != 0)
-    //         pa(stack);
-    //     i++;
-    // }
+    i = 0;
+    while (!is_sorted(stack))
+    {
+        j = 0;
+        while (j < stack->stack_len)
+        {
+            if (check_bit(stack->stack_a[0], i))
+                ra(stack);
+            else
+                pb(stack);
+            j++;
+        }
+        while (stack->b_len != 0)
+            pa(stack);
+        i++;
+    }
 }
 
 void    push_swap(t_stack *stack)
@@ -55,7 +40,7 @@ void    push_swap(t_stack *stack)
         else
             radix_sort(stack);
     }
-    ft_printf("is sort:%d\n", is_sorted(stack));
+    // ft_printf("is sort:%d\n", is_sorted(stack));
     free(stack->stack_a);
     free(stack->stack_b);
 }

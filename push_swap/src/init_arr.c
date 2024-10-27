@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-int count_arr(char *str)
+int count_arr(t_stack *stack, char *str)
 {
     int i;
     int len;
@@ -24,7 +24,7 @@ int count_arr(char *str)
             len++;
         }
         else if (str[i])
-            return (0);
+            error(stack);
     }
     return (len);
 }
@@ -60,9 +60,9 @@ void init_str(t_stack *stack, char *s)
 {
     char    **arr_num;
 
-    stack->stack_len = count_arr(s);
-    if (stack->stack_len == 0 && (stack->stack_len < 2))
-        error(stack);
+    stack->stack_len = count_arr(stack, s);
+    if (stack->stack_len == 0 || stack->stack_len < 2)
+        exit(0);
     stack->stack_a = (int *)malloc(sizeof(int) * (stack->stack_len));
     stack->stack_b = (int *)malloc(sizeof(int) * (stack->stack_len));
     if (!stack->stack_a || !stack->stack_b)

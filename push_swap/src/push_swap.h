@@ -56,6 +56,7 @@ void    rrr(t_stack *stack);
 void    test(t_stack *stack);
 void    print_a(t_stack *stack);
 void    print_b(t_stack *stack);
+void    print_ab(t_stack *stack);
 void    print_temp(int *n, int len);
 
 #endif
