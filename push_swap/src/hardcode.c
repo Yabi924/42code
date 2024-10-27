@@ -46,7 +46,6 @@ void    hc_5(t_stack *stack)
     indexing(stack);
     hc_4(stack);
     pa(stack);
-    pa(stack);
 }
 
 void    hardcode(t_stack *stack)

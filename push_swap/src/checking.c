@@ -48,7 +48,7 @@ int check_arr_number(char **s)
     return (0);
 }
 
-int is_shorted(t_stack *stack)
+int is_sorted(t_stack *stack)
 {
     int i;
     i = 0;

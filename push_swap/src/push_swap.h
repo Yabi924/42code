@@ -24,7 +24,7 @@ void    init_arr(t_stack *stack, char **argv);
 void    check(t_stack *stack, int argc, char **argv);
 int     check_double(t_stack *stack);
 int     check_arr_number(char **s);
-int     is_shorted(t_stack *stack);
+int     is_sorted(t_stack *stack);
 
 //helper function
 void    index_swap(int *n, int i1, int i2);

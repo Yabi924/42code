@@ -13,6 +13,8 @@ int main(int argc, char **argv)
 {
     t_stack stack;
 
+    if (argc == 1)
+        return (0);
     init_stack(&stack, argc - 1);
     check(&stack, argc, argv);
     push_swap(&stack);
