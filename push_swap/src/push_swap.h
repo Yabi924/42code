@@ -31,6 +31,7 @@ void    index_swap(int *n, int i1, int i2);
 int     ft_atoi_overint(const char *str, int *mark);
 int     *copy_stack(int *target, int len);
 void    indexing(t_stack *stack);
+void    bb_sort(int *arr, int len);
 
 //error
 void    error(t_stack *stack);

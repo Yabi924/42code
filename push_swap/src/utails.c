@@ -53,7 +53,7 @@ int	*copy_stack(int *target, int len)
 	return (arr);
 }
 
-void    bb_short(int *arr, int len)
+void    bb_sort(int *arr, int len)
 {
     int i;
     int j;
@@ -81,7 +81,7 @@ void	indexing(t_stack *stack)
 	int	j;
 
     temp = copy_stack(stack->stack_a, stack->a_len);
-    bb_short(temp, stack->a_len);
+    bb_sort(temp, stack->a_len);
     j = 0;
 	while (j < stack->a_len)
 	{
