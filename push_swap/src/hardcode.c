@@ -40,11 +40,24 @@ void    hc_4(t_stack *stack)
 
 void    hc_5(t_stack *stack)
 {
-    while (stack->stack_a[0] != 0)
-        ra(stack);
-    pb(stack);
+    int i;
+
+    i = 0;
+    while (i < 2)
+    {
+        if (stack->stack_a[0] == 0 || stack->stack_a[0] == 1)
+        {
+            pb(stack);
+            i++;
+        }
+        else
+            ra(stack);
+    }
+    if (stack->stack_b[0] < stack->stack_b[1])
+        sb(stack);
     indexing(stack);
-    hc_4(stack);
+    hc_3(stack);
+    pa(stack);
     pa(stack);
 }
 

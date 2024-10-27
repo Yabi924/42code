@@ -11,7 +11,7 @@ SRCS = src/main.c \
 	src/utails.c \
 	src/push_swap.c \
 	src/hardcode.c \
-	src/test.c
+	# src/test.c
 
 OBJS = $(SRCS:src/%.c=src/%.o)
 

@@ -17,6 +17,9 @@ int main(int argc, char **argv)
         return (0);
     init_stack(&stack, argc - 1);
     check(&stack, argc, argv);
-    push_swap(&stack);
+    if (!is_sorted(&stack))
+        push_swap(&stack);
+    free(stack.stack_a);
+    free(stack.stack_b);
     return (0);
 }

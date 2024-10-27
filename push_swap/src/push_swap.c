@@ -33,14 +33,9 @@ void    radix_sort(t_stack *stack)
 void    push_swap(t_stack *stack)
 {
     indexing(stack);
-    if (!is_sorted(stack))
-    {
-        if (stack->stack_len <= 5)
-            hardcode(stack);
-        else
-            radix_sort(stack);
-    }
+    if (stack->stack_len <= 5)
+        hardcode(stack);
+    else
+        radix_sort(stack);
     // ft_printf("is sort:%d\n", is_sorted(stack));
-    free(stack->stack_a);
-    free(stack->stack_b);
 }
