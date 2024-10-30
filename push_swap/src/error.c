@@ -6,7 +6,7 @@
 /*   By: yyan-bin <yyan-bin.student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 17:18:29 by yyan-bin          #+#    #+#             */
-/*   Updated: 2024/10/30 18:23:56 by yyan-bin         ###   ########.fr       */
+/*   Updated: 2024/10/30 20:16:31 by yyan-bin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	free_arr(char **arr)
 	i = 0;
 	if (arr)
 	{
-	while (arr[i])
-		free(arr[i++]);
-	free(arr);
+		while (arr[i])
+			free(arr[i++]);
+		free(arr);
 	}
 }
 
@@ -30,19 +30,17 @@ void	error(t_stack *stack)
 	if (stack->stack_a)
 	{
 		free(stack->stack_a);
-        // ft_printf("free A\n");
 	}
-    if (stack->stack_b)
-    {
-        free(stack->stack_b);
-        // ft_printf("free B\n");
-    }
-    ft_printf("error\n");
-    exit(0);
+	if (stack->stack_b)
+	{
+		free(stack->stack_b);
+	}
+	ft_printf("error\n");
+	exit(0);
 }
 
-void    error_free_arr(t_stack *stack, char **arr)
+void	error_free_arr(t_stack *stack, char **arr)
 {
-    free_arr(arr);
-    error(stack);
+	free_arr(arr);
+	error(stack);
 }
