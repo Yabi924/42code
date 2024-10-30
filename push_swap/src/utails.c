@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utails.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yyan-bin <yyan-bin@student.42kl.edu.my>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/30 18:13:41 by yyan-bin          #+#    #+#             */
+/*   Updated: 2024/10/30 18:13:43 by yyan-bin         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	ft_atoi_overint(const char *str, int *mark)
@@ -18,12 +30,12 @@ int	ft_atoi_overint(const char *str, int *mark)
 		i++;
 	}
 	while (str[i] >= '0' && str[i] <= '9')
-	{
+	{  
 		save = save * 10 + (str[i] - '0');
         if (save > INT_MAX || save < INT_MIN)
             *mark = 1;
 		i++;
-	}
+	}  
 	return (save * sign);
 }
 
