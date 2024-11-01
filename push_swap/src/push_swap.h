@@ -44,6 +44,7 @@ int		ft_atoi_overint(const char *str, int *mark);
 int		*copy_stack(int *target, int len);
 void	indexing(t_stack *stack);
 void	bb_sort(int *arr, int len);
+void    copy_to_a_after_free(t_stack *stack, int *copy);
 
 //error
 void	error(t_stack *stack);

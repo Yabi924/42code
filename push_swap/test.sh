@@ -32,6 +32,17 @@ if [ "$1" = "8" ]; then
     ./push_swap 5 4 3 2 1
 fi
 
-ARG=$(ruby -e "puts (-2147483648..-2147483149).to_a.shuffle.join(' ')");
+# ARG=$(ruby -e "puts (-2147483648..-2147483149).to_a.shuffle.join(' ')");
+# echo $ARG
+# ./push_swap $ARG
+
+ARG=$(ruby -e "puts (-250..249).to_a.shuffle.join(' ')");
+./push_swap $ARG | ./checker_Mac $ARG
 echo $ARG
-./push_swap $ARG
+# if [ $S == "OK" ]; then
+# 	printf "${GREEN}$cont .[OK]${DEF_COLOR}";
+# 	control=2
+# else
+# 	printf "${RED}$cont .[KO]${DEF_COLOR}";
+# 	control=3
+# fi

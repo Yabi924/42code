@@ -9,6 +9,7 @@ SRCS = src/main.c \
 	src/init_arr.c \
 	src/checking.c \
 	src/utails.c \
+	src/utails2.c \
 	src/push_swap.c \
 	src/hardcode.c \
 

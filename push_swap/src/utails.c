@@ -89,11 +89,15 @@ void	bb_sort(int *arr, int len)
 void	indexing(t_stack *stack)
 {
 	int	*temp;
+	int	*copy;
 	int	i;
 	int	j;
 
 	temp = copy_stack(stack->stack_a, stack->a_len);
 	bb_sort(temp, stack->a_len);
+	copy = (int *)malloc(sizeof(int) * stack->stack_len);
+	if (!copy)
+		return ;
 	j = 0;
 	while (j < stack->a_len)
 	{
@@ -102,10 +106,11 @@ void	indexing(t_stack *stack)
 		{
 			if (temp[j] == stack->stack_a[i])
 			{
-				stack->stack_a[i] = j++;
+				copy[i] = j++;
 				break ;
 			}
 		}
 	}
 	free(temp);
+	copy_to_a_after_free(stack, copy);
 }
