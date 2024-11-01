@@ -23,7 +23,7 @@ int	ft_atoi_overint(const char *str, int *mark)
 	save = 0;
 	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
 		i++;
-	if (istr[i] == '-' || str[i] == '+')
+	if (str[i] == '-' || str[i] == '+')
 	{
 		if (str[i] == '-')
 			sign = sign * -1;
@@ -32,7 +32,7 @@ int	ft_atoi_overint(const char *str, int *mark)
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		save = save * 10 + (str[i] - '0');
-		if (save > INT_MAX || save < INT_MIN)
+		if (save > 2147483647 || save < -2147483648)
 			*mark = 1;
 		i++;
 	}

@@ -23,7 +23,7 @@ typedef struct s_stack
 	int	a_len;
 	int	b_len;
 	int	stack_len;
-
+	int	mark;
 }	t_stack;
 
 //main
@@ -49,6 +49,8 @@ void	bb_sort(int *arr, int len);
 void	error(t_stack *stack);
 void	free_arr(char **arr);
 void	error_free_arr(t_stack *stack, char **arr);
+void	error2(t_stack *stack);
+void	error2_free_arr(t_stack *stack, char **arr);
 
 //swap
 void	sa(t_stack *stack);

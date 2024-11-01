@@ -35,7 +35,7 @@ void	error(t_stack *stack)
 	{
 		free(stack->stack_b);
 	}
-	ft_printf("error\n");
+	write(2, "Error\n", 6);
 	exit(0);
 }
 
@@ -43,4 +43,23 @@ void	error_free_arr(t_stack *stack, char **arr)
 {
 	free_arr(arr);
 	error(stack);
+}
+
+void	error2(t_stack *stack)
+{
+	if (stack->stack_a)
+	{
+		free(stack->stack_a);
+	}
+	if (stack->stack_b)
+	{
+		free(stack->stack_b);
+	}
+	exit(0);
+}
+
+void	error2_free_arr(t_stack *stack, char **arr)
+{
+	free_arr(arr);
+	error2(stack);
 }

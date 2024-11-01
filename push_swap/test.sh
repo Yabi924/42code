@@ -31,3 +31,7 @@ fi
 if [ "$1" = "8" ]; then
     ./push_swap 5 4 3 2 1
 fi
+
+ARG=$(ruby -e "puts (-2147483648..-2147483149).to_a.shuffle.join(' ')");
+echo $ARG
+./push_swap $ARG

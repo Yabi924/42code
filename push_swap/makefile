@@ -1,4 +1,4 @@
-CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror #-g3 -fsanitize=address
 NAME = push_swap
 
 SRCS = src/main.c \
@@ -11,7 +11,6 @@ SRCS = src/main.c \
 	src/utails.c \
 	src/push_swap.c \
 	src/hardcode.c \
-	# src/test.c
 
 OBJS = $(SRCS:src/%.c=src/%.o)
 

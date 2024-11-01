@@ -51,7 +51,7 @@ int	check_arr_number(char **s)
 					!ft_isdigit(s[j][i]))
 				return (1);
 			if ((s[j][i] == '-' || s[j][i] == '+') && \
-					!ft_isdigit(s[j][i + 1]))
+					(!ft_isdigit(s[j][i + 1]) || ft_isdigit(s[j][i - 1])))
 				return (1);
 			i++;
 		}
