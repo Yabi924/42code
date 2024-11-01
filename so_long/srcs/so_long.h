@@ -87,15 +87,28 @@ typedef struct s_game
 	int		fd;
 }	t_game;
 
+//init map
 void	map_init(t_game *game);
+
+//checking
+int		double_newline(char *s);
 void	flood_fill(t_game *game);
+void	check_position(t_game *game);
+
+//count erveything
+void	count_obj(t_game *game, int i, int j);
+
+//move & loop img
+void	player_move(t_game *game, int key);
+void	emy_move(t_game *game);
+int		img_loop(t_game *game);
+
+//exit
+void	free_map(t_game *game);
 void	exit_game(t_game *game, int fd);
 void	exit_map_error(t_game *game);
 void	exit_lose(t_game *game);
 void	exit_win(t_game *game);
-void	player_move(t_game *game, int key);
-int		img_loop(t_game *game);
-void	check_position(t_game *game);
-void	emy_move(t_game *game);
+void	exit_void_map(char *map);
 
 #endif

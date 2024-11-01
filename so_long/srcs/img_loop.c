@@ -25,12 +25,9 @@ void	check_and_put(t_game *game, char c, int x, int y)
 	if (c == 'C')
 		mlx_put_image_to_window(game->mlx, game->mlx_win, \
 		game->mlx_col, x, y);
-	if (c == 'E')
-	{
-		if (game->col_len == 0)
-			mlx_put_image_to_window(game->mlx, game->mlx_win, \
-			game->mlx_exit, x, y);
-	}
+	if (c == 'E' && game->col_len == 0)
+		mlx_put_image_to_window(game->mlx, game->mlx_win, \
+		game->mlx_exit, x, y);
 }
 
 void	loop_bg_wall(t_game *game)
@@ -53,7 +50,7 @@ void	loop_bg_wall(t_game *game)
 	}
 }
 
-void	loop_emy(t_game *game)
+void	loop_emy_move(t_game *game)
 {
 	static int	frame = 0;
 
@@ -65,17 +62,17 @@ void	loop_emy(t_game *game)
 	frame++;
 }
 
-void	loop_char(t_game *game)
+void	loop_char_img(t_game *game)
 {
-	if (game->animation_count % 32 < 16)
+	if (game->animation_count % 48 < 24)
 	{
-		game->path_player = "./sprites/rotania1.xpm";
-		game->path_enemy = "./sprites/nina1.xpm";
+		game->path_enemy = "./sprites/rotania1.xpm";
+		game->path_player = "./sprites/nina1.xpm";
 	}
-	if (game->animation_count % 32 >= 16)
+	else
 	{
-		game->path_player = "./sprites/rotania2.xpm";
-		game->path_enemy = "./sprites/nina2.xpm";
+		game->path_enemy = "./sprites/rotania2.xpm";
+		game->path_player = "./sprites/nina2.xpm";
 	}
 	game->mlx_player = mlx_xpm_file_to_image(game->mlx, \
 		game->path_player, &game->img_size, &game->img_size);
@@ -88,9 +85,11 @@ int	img_loop(t_game *game)
 {
 	char	*move_count;
 
-	loop_bg_wall(game);
-	loop_char(game);
 	check_position(game);
+	loop_bg_wall(game);
+	loop_char_img(game);
+	if (game->emy_len)
+		loop_emy_move(game);
 	mlx_put_image_to_window(game->mlx, game->mlx_win, \
 	game->mlx_player, game->player_x * 64, game->player_y * 64);
 	if (game->emy_len == 1)
@@ -102,8 +101,6 @@ int	img_loop(t_game *game)
 	mlx_string_put(game->mlx, game->mlx_win, 130, 16, \
 		4444444, move_count);
 	free(move_count);
-	if (game->emy_len)
-		loop_emy(game);
 	game->animation_count++;
 	return (0);
 }

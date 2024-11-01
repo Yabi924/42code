@@ -74,11 +74,6 @@ int	main(int argc, char **argv)
 	}
 	game.mlx = mlx_init();
 	game_init(&game, argv[1]);
-	if (!game.mlx)
-	{
-		ft_printf("mlx_init return NULL\nplease check server\n");
-		return (0);
-	}
 	game.mlx_win = mlx_new_window(game.mlx, \
 	game.map_wid * 64, game.map_heg * 64, "so_long");
 	mlx_loop_hook(game.mlx, img_loop, &game);

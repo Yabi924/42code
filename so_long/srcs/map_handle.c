@@ -6,7 +6,7 @@
 /*   By: yyan-bin <yyan-bin@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 19:18:44 by yyan-bin          #+#    #+#             */
-/*   Updated: 2024/10/22 19:19:00 by yyan-bin         ###   ########.fr       */
+/*   Updated: 2024/10/31 19:38:36 by yyan-bin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,24 +30,32 @@ int	check_wid_same(char **s)
 	return (wid);
 }
 
-void	count_obj(t_game *game, int i, int j)
+char	*read_map(t_game *game)
 {
-	if (game->arr_map[j][i] == 'P')
+	int		fd;
+	char	*map;
+	char	*map_temp;
+	char	*readd;
+
+	map = NULL;
+	fd = open(game->path_map, O_RDONLY);
+	exit_game(game, fd);
+	readd = get_next_line(fd);
+	while (readd)
 	{
-		game->player_x = i;
-		game->player_y = j;
-		game->player_len++;
+		if (!map)
+			map = ft_strdup(readd);
+		else
+		{
+			map_temp = ft_strjoin(map, readd);
+			free(map);
+			map = map_temp;
+		}
+		game->map_heg++;
+		free(readd);
+		readd = get_next_line(fd);
 	}
-	if (game->arr_map[j][i] == 'A')
-	{
-		game->emy_x = i;
-		game->emy_y = j;
-		game->emy_len++;
-	}
-	if (game->arr_map[j][i] == 'C')
-		game->col_len++;
-	if (game->arr_map[j][i] == 'E')
-		game->exit_len++;
+	return (map);
 }
 
 int	check(t_game *game)
@@ -81,8 +89,6 @@ int	check(t_game *game)
 
 void	map_check(t_game *game, char *map)
 {
-	if (*map == '\0')
-		exit_map_error(game);
 	game->arr_map = ft_split(map, '\n');
 	game->map = ft_split(map, '\n');
 	game->map_wid = check_wid_same(game->arr_map);
@@ -95,29 +101,11 @@ void	map_check(t_game *game, char *map)
 
 void	map_init(t_game *game)
 {
-	int		fd;
 	char	*map;
-	char	*map_temp;
-	char	*readd;
 
-	map = NULL;
-	fd = open(game->path_map, O_RDONLY);
-	exit_game(game, fd);
-	readd = get_next_line(fd);
-	while (readd)
-	{
-		if (!map)
-			map = ft_strdup(readd);
-		else
-		{
-			map_temp = ft_strjoin(map, readd);
-			free(map);
-			map = map_temp;
-		}
-		game->map_heg++;
-		free(readd);
-		readd = get_next_line(fd);
-	}
+	map = read_map(game);
+	if (!map || *map == '\0' || double_newline(map))
+		exit_void_map(map);
 	map_check(game, map);
 	free(map);
 }
