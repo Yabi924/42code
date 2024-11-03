@@ -32,17 +32,27 @@ if [ "$1" = "8" ]; then
     ./push_swap 5 4 3 2 1
 fi
 
-# ARG=$(ruby -e "puts (-2147483648..-2147483149).to_a.shuffle.join(' ')");
-# echo $ARG
-# ./push_swap $ARG
+if [ "$1" = "9" ]; then
+    ./push_swap "-2147483648 -2147483647 -2147483646"
+fi
 
-ARG=$(ruby -e "puts (-250..249).to_a.shuffle.join(' ')");
-./push_swap $ARG | ./checker_Mac $ARG
-echo $ARG
-# if [ $S == "OK" ]; then
-# 	printf "${GREEN}$cont .[OK]${DEF_COLOR}";
-# 	control=2
-# else
-# 	printf "${RED}$cont .[KO]${DEF_COLOR}";
-# 	control=3
-# fi
+ARG=""
+./push_swap ""
+leaks -atExit -- ./push_swap $ARG > /dev/null && echo $?
+
+# ARG=$(ruby -e "puts (-50000..-49510).to_a.shuffle.join(' ')");
+# ./push_swap $ARG | ./checker_linux $ARG
+# ./push_swap $ARG
+# echo $ARG
+
+
+# val=101
+
+# cont=1
+# while [ $cont -lt $val ]
+# do
+# ARG=$(ruby -e "puts (00..499).to_a.shuffle.join(' ')");
+# printf "$cont: ";
+# ./push_swap $ARG | ./checker_linux $ARG
+# ((cont++))
+# done
