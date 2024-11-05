@@ -29,10 +29,10 @@ NAME: server client
 %.o: %.c
 	@${CC} ${CFLAGS} -c $< -o $@
 
-server:	server.o
+server:	server.o ft
 	${CC} ${CFLAGS} -o server server.o ${DLIBFT} ${DPRINTF}
 
-client:	client.o
+client:	client.o ft
 	${CC} ${CFLAGS} -o client client.o ${DLIBFT} ${DPRINTF}
 
 ft:
@@ -53,4 +53,4 @@ fcleanl: cleanl fclean
 	@make fclean -C libft --no-print-directory
 	@make fclean -C ft_printf --no-print-directory
 
-re:	fcleanl all
+re:	fclean all
