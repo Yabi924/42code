@@ -60,7 +60,7 @@ int	main(int argc, char **argv)
 		get_var(ft_atoi(argv[1]), argv[2]);
 	else
 	{
-		ft_printf("please follow with: ./exe pid message.\n");
+		ft_printf("please follow with: ./client <pid> <message>.\n");
 		return (0);
 	}
 	while (1)

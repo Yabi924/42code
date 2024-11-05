@@ -43,7 +43,7 @@ int	main(void)
 	sigemptyset(&action.sa_mask);
 	sigaction(SIGUSR1, &action, NULL);
 	sigaction(SIGUSR2, &action, NULL);
-	ft_printf("process pid: %d\n", getpid());
+	ft_printf("pid: %d\n", getpid());
 	while (1)
 		pause();
 	return (0);
