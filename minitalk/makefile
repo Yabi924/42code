@@ -29,10 +29,12 @@ NAME: server client
 %.o: %.c
 	@${CC} ${CFLAGS} -c $< -o $@
 
-server:	server.o ft
+server:	server.o
+	@make ft
 	${CC} ${CFLAGS} -o server server.o ${DLIBFT} ${DPRINTF}
 
-client:	client.o ft
+client:	client.o
+	@make ft
 	${CC} ${CFLAGS} -o client client.o ${DLIBFT} ${DPRINTF}
 
 ft:

@@ -21,7 +21,7 @@ L_Gray='\e[0;37m'
 White='\e[1;37m'
 NC='\e[0m' 
 
-p_id="301809"
+p_id="17512"
 
 
 # $PATH_TO_CLIENT $p_id "

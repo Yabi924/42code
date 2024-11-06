@@ -24,7 +24,7 @@ PATH_LIB = $(LIBFT_PATH) $(PF_PATH)
 
 all: $(NAME)
 
-$(NAME): $(OBJS) ft
+$(NAME): $(OBJS)
 	@gcc $(CFLAGS) -o $(NAME) $(OBJS) $(PATH_LIB) $(LIB_FLAG)
 	@echo "Hello push_swap"
 	@make clean --no-print-directory

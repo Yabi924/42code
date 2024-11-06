@@ -12,11 +12,14 @@
 
 #include "minitalk.h"
 
-void	get_var(int pid, char *send)
+void	get_var(int s_pid, char *send)
 {
 	static int	bit = 7;
 	static char	*str;
+	static int	pid = 0;
 
+	if (pid == 0)
+		pid = s_pid;
 	if (send)
 		str = send;
 	if (*str)
@@ -36,26 +39,15 @@ void	get_var(int pid, char *send)
 		exit(0);
 }
 
-void	sig_res(int signal, siginfo_t *info, void *s)
+void	sig_res(int signal)
 {
-	static int	pid;
-
-	(void)s;
-	if (info->si_pid != 0)
-		pid = info->si_pid;
 	if (signal == SIGUSR1)
-		get_var(pid, NULL);
+		get_var(0, NULL);
 }
 
 int	main(int argc, char **argv)
 {
-	struct sigaction	action;
-
-	action.sa_flags = SA_SIGINFO;
-	action.sa_sigaction = sig_res;
-	sigemptyset(&action.sa_mask);
-	sigaction(SIGUSR1, &action, NULL);
-	sigaction(SIGUSR2, &action, NULL);
+	signal(SIGUSR1, &sig_res);
 	if (argc == 3)
 		get_var(ft_atoi(argv[1]), argv[2]);
 	else
