@@ -23,15 +23,13 @@ void	res_word(int signal, siginfo_t *info, void *s)
 	else if (signal == SIGUSR2)
 		word = (word << 1);
 	i++;
-	if (i != 8)
-		kill(info->si_pid, SIGUSR1);
-	else if (i == 8)
+	if (i == 8)
 	{
 		ft_printf("%c", word);
 		word = 0;
 		i = 0;
-		kill(info->si_pid, SIGUSR1);
 	}
+	kill(info->si_pid, SIGUSR1);
 }
 
 int	main(void)
