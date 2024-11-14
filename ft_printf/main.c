@@ -18,14 +18,10 @@
 // %p
 int main()
 {
-    int a = 123;
-    void *s = NULL;
-
-    //int i = ft_printf("%0i", a);
-    //printf("\n%d\n", i);
-    int j = printf("%010i", a);
-    printf("\n%d\n", j);
-
+    int i = 0;
+    // ft_printf("%d\n", i);
+    printf("%z\n", i);
+INT_MAX
     return 0;
 }
 
