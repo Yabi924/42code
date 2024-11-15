@@ -4,6 +4,7 @@
 # include <pthread.h>
 # include <stdio.h>
 # include <unistd.h>
+# include <stdlib.h>
 
 typedef struct  s_philo
 {
@@ -12,7 +13,8 @@ typedef struct  s_philo
     int sleep_time;
     int eat_time;
     int philo_code;
-    pthread_mutex_t is_dead;
+    pthread_mutex_t lock;
+    int is_dead;
 }   t_philo;
 
 //philo

@@ -6,7 +6,7 @@
 /*   By: yyan-bin <yyan-bin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 01:39:10 by yyan-bin          #+#    #+#             */
-/*   Updated: 2024/11/15 01:53:30 by yyan-bin         ###   ########.fr       */
+/*   Updated: 2024/11/15 19:02:44 by yyan-bin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,12 @@ void run_thread(t_philo *data)
     pthread_t *philo;
 
     i = 0;
+    philo = malloc(sizeof(pthread_t) * data->philo_len);
+    pthread_mutex_init(&data->lock, NULL);
     while (i < data->philo_len)
     {
         data->philo_code = i;
-        pthread_create(&philo[i], NULL, &philo_live, data);
+        pthread_create(&philo[i++], NULL, &philo_live, data);
     }
     while (i != 0)
     {
@@ -51,7 +53,7 @@ int main(int argc, char **argv)
 {
     t_philo philo_data;
 
-    if (argc < 5)
+    if (argc != 5 && argc != 6)
     {
         printf("usage: ./philo with 4 argument\n");
         return (1);
