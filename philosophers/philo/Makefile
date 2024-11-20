@@ -2,7 +2,10 @@ CFLAGS = -Wall -Wextra -Werror -pthread
 
 NAME = philo
 
-SRCS = main.c philo.c utils.c
+SRCS = main.c \
+	philo.c \
+	utils.c
+
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)

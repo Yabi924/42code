@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yyan-bin <yyan-bin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yyan-bin <yyan-bin@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/15 01:39:10 by yyan-bin          #+#    #+#             */
-/*   Updated: 2024/11/15 19:02:44 by yyan-bin         ###   ########.fr       */
+/*   Created: 2024/11/19 19:07:36 by yyan-bin          #+#    #+#             */
+/*   Updated: 2024/11/19 19:22:00 by yyan-bin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ int main(int argc, char **argv)
     if (argc != 5 && argc != 6)
     {
         printf("usage: ./philo with 4 argument\n");
+        printf("optional: [number_of_times_each_philosopher_must_eat]\n");
         return (1);
     }
     init_data(&philo_data, argv);
