@@ -6,7 +6,7 @@
 /*   By: yyan-bin <yyan-bin@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 00:52:59 by yyan-bin          #+#    #+#             */
-/*   Updated: 2024/11/28 00:53:02 by yyan-bin         ###   ########.fr       */
+/*   Updated: 2024/11/28 01:22:31 by yyan-bin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,20 +37,20 @@ int	ft_atoi(const char *str)
 	return (save * sign);
 }
 
-void    error_messege(char *s)
+void	error_messege(char *s)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    if (!s[i])
-        return ;
-    while (s[i])
-        write(1, &s[i++], 1);
+	i = 0;
+	if (!s[i])
+		return ;
+	while (s[i])
+		write(1, &s[i++], 1);
 }
 
 long long	get_time(void)
 {
-	struct timeval time;
+	struct timeval	time;
 
 	gettimeofday(&time, NULL);
 	return (time.tv_sec * 1000 + time.tv_usec / 1000);
@@ -60,7 +60,7 @@ void	messege(t_philo *data, char *m, int philo_code)
 {
 	if (data->is_dead || data->eat_max)
 		return ;
-    printf("%lld %d %s\n", get_time() - data->start_time, philo_code + 1, m);
+	printf("%lld %d %s\n", get_time() - data->start_time, philo_code + 1, m);
 }
 
 void	ft_usleep(int time)
