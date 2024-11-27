@@ -6,7 +6,7 @@
 /*   By: yyan-bin <yyan-bin@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 19:10:11 by yyan-bin          #+#    #+#             */
-/*   Updated: 2024/11/19 19:11:21 by yyan-bin         ###   ########.fr       */
+/*   Updated: 2024/11/27 23:47:27 by yyan-bin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,26 +17,30 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include <sys/time.h>
 
 typedef struct  s_philo
 {
-    int philo_len;
-    int time_to_dead;
-    int sleep_time;
-    int eat_time;
-    int max_eat;
+    int number_of_philo;
+    int time_to_die;
+    int time_to_eat;
+    int time_to_sleep;
+    int must_eat;
+    
     int philo_code;
+    int is_dead;
+    int eat_max;
+    long long   start_time;
+    long long   *last_eat;
     pthread_mutex_t lock;
     pthread_mutex_t *fork;
-    int is_dead;
 }   t_philo;
 
-//philo
-void    *philo_live(void *adata);
-
-//utils
-int     ft_atoi(const char *str);
-int     ft_strlen(char *str);
-void    ft_wr(char *str);
+int	ft_atoi(const char *str);
+void    error_messege(char *s);
+void    *philo_life(void *philo_data);
+long long	get_time(void);
+void	messege(t_philo *data, char *tpye, int philo_code);
+void	ft_usleep(int time);
 
 #endif

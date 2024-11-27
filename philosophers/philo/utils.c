@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yyan-bin <yyan-bin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yyan-bin <yyan-bin@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/15 18:55:55 by yyan-bin          #+#    #+#             */
-/*   Updated: 2024/11/19 19:08:49 by yyan-bin         ###   ########.fr       */
+/*   Created: 2024/11/28 00:52:59 by yyan-bin          #+#    #+#             */
+/*   Updated: 2024/11/28 00:53:02 by yyan-bin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,22 +37,37 @@ int	ft_atoi(const char *str)
 	return (save * sign);
 }
 
-int ft_strlen(char *str)
+void    error_messege(char *s)
 {
     int i;
 
     i = 0;
-    while (str[i])
-        i++;
-    return i;
+    if (!s[i])
+        return ;
+    while (s[i])
+        write(1, &s[i++], 1);
 }
 
-void wr(char *str)
+long long	get_time(void)
 {
-    int i = 0;
+	struct timeval time;
 
-    if (!str)
-        return ;
-    while (str[i])
-        write(1, &str[i++], 1);
+	gettimeofday(&time, NULL);
+	return (time.tv_sec * 1000 + time.tv_usec / 1000);
+}
+
+void	messege(t_philo *data, char *m, int philo_code)
+{
+	if (data->is_dead || data->eat_max)
+		return ;
+    printf("%lld %d %s\n", get_time() - data->start_time, philo_code + 1, m);
+}
+
+void	ft_usleep(int time)
+{
+	long long	start;
+
+	start = get_time();
+	while ((get_time() - start) < time)
+		usleep(500);
 }
