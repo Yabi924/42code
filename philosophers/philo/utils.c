@@ -62,7 +62,7 @@ void	ft_usleep(int time)
 
 	start = get_time();
 	while ((get_time() - start) < time)
-		usleep(500);
+		usleep(100);
 }
 
 void	free_data(t_philo *data)

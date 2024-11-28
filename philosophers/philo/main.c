@@ -74,7 +74,7 @@ void	check_dead(t_philo *data)
 				f = 0;
 			pthread_mutex_unlock(&data->lock);
 		}
-		usleep(1000);
+		ft_usleep(data->time_to_die / 10);
 	}
 }
 
