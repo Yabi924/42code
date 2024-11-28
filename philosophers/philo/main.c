@@ -43,7 +43,7 @@ int	check_data(t_philo *data)
 {
 	if (data->number_of_philo < 1 || data->number_of_philo > 200 || \
 		data->time_to_die < 60 || data->time_to_eat < 60 || \
-		data->time_to_sleep < 60)
+		data->time_to_sleep < 60 || (data->must_eat != -1 && data->must_eat < 1))
 		return (1);
 	return (0);
 }
@@ -64,7 +64,7 @@ void	check_dead(t_philo *data)
 			{
 				f = 0;
 				data->is_dead = 1;
-				printf("%lld %d is dead\n", \
+				printf("%lld %d dead\n", \
 					get_time() - data->start_time, i + 1);
 			}
 			else if (data->eat_max == 1 && data->must_eat > 0)
@@ -112,6 +112,9 @@ int	main(int argc, char **argv)
 		error_messege("invalid argument\n");
 		return (1);
 	}
-	create_thread(&data);
+	if (data.number_of_philo == 1)
+		one_philo(&data);
+	else
+		create_thread(&data);
 	return (0);
 }

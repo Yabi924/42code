@@ -42,5 +42,6 @@ void		*philo_life(void *philo_data);
 void		messege(t_philo *data, char *tpye, int philo_code);
 void		ft_usleep(int time);
 long long	get_time(void);
+void	one_philo(t_philo *data);
 
 #endif

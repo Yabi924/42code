@@ -58,9 +58,14 @@ long long	get_time(void)
 
 void	messege(t_philo *data, char *m, int philo_code)
 {
+	pthread_mutex_lock(&data->lock);
 	if (data->is_dead || data->eat_max)
+	{
+		pthread_mutex_unlock(&data->lock);
 		return ;
+	}
 	printf("%lld %d %s\n", get_time() - data->start_time, philo_code + 1, m);
+	pthread_mutex_unlock(&data->lock);
 }
 
 void	ft_usleep(int time)

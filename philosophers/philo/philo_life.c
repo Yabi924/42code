@@ -12,6 +12,15 @@
 
 #include "philo.h"
 
+void	one_philo(t_philo *data)
+{
+	printf("%lld 1 is taken a fork\n", get_time() - data->start_time);
+	ft_usleep(data->time_to_die);
+	printf("%lld 1 dead\n", get_time() - data->start_time);
+	// free_data(data);
+	return ;
+}
+
 int	is_dead(t_philo *data, int eat_count)
 {
 	pthread_mutex_lock(&data->lock);
@@ -71,9 +80,12 @@ void	*philo_life(void *philo_data)
 	{
 		eat(data, philo_code, fork1, fork2);
 		eat_count++;
-		messege(data, "is sleeping", philo_code);
-		ft_usleep(data->time_to_sleep);
-		messege(data, "is thinking", philo_code);
+		if (!is_dead(data, eat_count))
+		{
+			messege(data, "is sleeping", philo_code);
+			ft_usleep(data->time_to_sleep);
+			messege(data, "is thinking", philo_code);
+		}
 	}
 	return (NULL);
 }
