@@ -56,18 +56,6 @@ long long	get_time(void)
 	return (time.tv_sec * 1000 + time.tv_usec / 1000);
 }
 
-void	messege(t_philo *data, char *m, int philo_code)
-{
-	pthread_mutex_lock(&data->lock);
-	if (data->is_dead || data->eat_max)
-	{
-		pthread_mutex_unlock(&data->lock);
-		return ;
-	}
-	printf("%lld %d %s\n", get_time() - data->start_time, philo_code + 1, m);
-	pthread_mutex_unlock(&data->lock);
-}
-
 void	ft_usleep(int time)
 {
 	long long	start;
@@ -75,4 +63,18 @@ void	ft_usleep(int time)
 	start = get_time();
 	while ((get_time() - start) < time)
 		usleep(500);
+}
+
+void	free_data(t_philo *data)
+{
+	int	i;
+
+	i = -1;
+	pthread_mutex_destroy(&(data->lock));
+	while (++i < data->number_of_philo)
+		pthread_mutex_destroy(&(data->fork[i]));
+	if (data->fork)
+		free(data->fork);
+	if (data->last_eat)
+		free(data->last_eat);
 }

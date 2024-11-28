@@ -12,12 +12,23 @@
 
 #include "philo.h"
 
+void	messege(t_philo *data, char *m, int philo_code)
+{
+	pthread_mutex_lock(&data->lock);
+	if (data->is_dead || data->eat_max)
+	{
+		pthread_mutex_unlock(&data->lock);
+		return ;
+	}
+	printf("%lld %d %s\n", get_time() - data->start_time, philo_code + 1, m);
+	pthread_mutex_unlock(&data->lock);
+}
+
 void	one_philo(t_philo *data)
 {
 	printf("%lld 1 is taken a fork\n", get_time() - data->start_time);
 	ft_usleep(data->time_to_die);
 	printf("%lld 1 dead\n", get_time() - data->start_time);
-	// free_data(data);
 	return ;
 }
 

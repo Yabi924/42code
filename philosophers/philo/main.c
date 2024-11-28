@@ -28,6 +28,8 @@ void	init_data(t_philo *data, char **argv)
 	data->start_time = get_time();
 	data->is_dead = 0;
 	data->eat_max = 0;
+	if (data->number_of_philo == 1)
+		return ;
 	data->last_eat = (long long *)malloc(sizeof(long long) * \
 		data->number_of_philo);
 	data->fork = malloc(sizeof(pthread_mutex_t) * data->number_of_philo);
@@ -43,7 +45,8 @@ int	check_data(t_philo *data)
 {
 	if (data->number_of_philo < 1 || data->number_of_philo > 200 || \
 		data->time_to_die < 60 || data->time_to_eat < 60 || \
-		data->time_to_sleep < 60 || (data->must_eat != -1 && data->must_eat < 1))
+		data->time_to_sleep < 60 || \
+			(data->must_eat != -1 && data->must_eat < 1))
 		return (1);
 	return (0);
 }
@@ -95,6 +98,8 @@ void	create_thread(t_philo *data)
 	i = 0;
 	while (i < data->number_of_philo)
 		pthread_join(philo[i++], NULL);
+	free(philo);
+	free_data(data);
 }
 
 int	main(int argc, char **argv)
