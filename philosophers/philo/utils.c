@@ -6,7 +6,7 @@
 /*   By: yyan-bin <yyan-bin@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 00:52:59 by yyan-bin          #+#    #+#             */
-/*   Updated: 2024/11/28 01:22:31 by yyan-bin         ###   ########.fr       */
+/*   Updated: 2024/12/02 16:27:24 by yyan-bin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	error_messege(char *s)
 	if (!s[i])
 		return ;
 	while (s[i])
-		write(1, &s[i++], 1);
+		write(2, &s[i++], 1);
 }
 
 long long	get_time(void)

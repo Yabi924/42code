@@ -6,7 +6,7 @@
 /*   By: yyan-bin <yyan-bin@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 00:52:54 by yyan-bin          #+#    #+#             */
-/*   Updated: 2024/11/28 01:21:08 by yyan-bin         ###   ########.fr       */
+/*   Updated: 2024/12/02 16:28:40 by yyan-bin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	messege(t_philo *data, char *m, int philo_code)
 {
 	pthread_mutex_lock(&data->lock);
-	if (data->is_dead || data->eat_max)
+	if (data->is_dead || data->eat_max == data->number_of_philo)
 	{
 		pthread_mutex_unlock(&data->lock);
 		return ;
@@ -35,19 +35,20 @@ void	one_philo(t_philo *data)
 int	is_dead(t_philo *data, int eat_count)
 {
 	pthread_mutex_lock(&data->lock);
-	if (data->is_dead == 1 || eat_count == data->must_eat)
+	if (data->is_dead == 1 || data->eat_max == data->number_of_philo)
 	{
-		data->eat_max = 1;
 		pthread_mutex_unlock(&data->lock);
 		return (1);
 	}
+	if (eat_count == data->must_eat)
+		data->eat_max += 1;
 	pthread_mutex_unlock(&data->lock);
 	return (0);
 }
 
 void	eat(t_philo *data, int philo_code, int fork1, int fork2)
 {
-	if (data->is_dead || data->eat_max)
+	if (data->is_dead || data->eat_max == data->number_of_philo)
 		return ;
 	if (philo_code % 2 == 0)
 	{
