@@ -6,7 +6,7 @@
 /*   By: yyan-bin <yyan-bin@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 00:53:50 by yyan-bin          #+#    #+#             */
-/*   Updated: 2024/12/02 16:38:33 by yyan-bin         ###   ########.fr       */
+/*   Updated: 2024/12/02 17:43:22 by yyan-bin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,8 @@ void	check_dead(t_philo *data)
 				printf("%lld %d dead\n", \
 					get_time() - data->start_time, i + 1);
 			}
-			else if (data->eat_max == data->number_of_philo && data->must_eat > 0)
+			else if (data->eat_max == data->number_of_philo && \
+				data->must_eat > 0)
 				f = 0;
 			pthread_mutex_unlock(&data->lock);
 		}
