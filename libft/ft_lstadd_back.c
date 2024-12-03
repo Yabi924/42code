@@ -1,20 +1,32 @@
-#include "struct.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yyan-bin <yyan-bin@student.42kl.edu.my>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/03 17:45:52 by yyan-bin          #+#    #+#             */
+/*   Updated: 2024/12/03 17:46:22 by yyan-bin         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void    ft_lstadd_back(t_list **lst, t_list *new)
+#include "libft.h"
+
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-    t_list *last;
+	t_list	*last;
 
-    if (!lst || !new)
-        return ;
-    if (!*lst)
-    {
-        *lst = new;
-        return ;
-    }
-    last = *lst;
-    while (last->next)
-        last = last->next;
-    last->next = new;
+	if (!lst || !new)
+		return ;
+	if (!*lst)
+	{
+		*lst = new;
+		return ;
+	}
+	last = *lst;
+	while (last->next)
+		last = last->next;
+	last->next = new;
 }
 
 /*

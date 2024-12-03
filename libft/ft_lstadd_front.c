@@ -1,13 +1,25 @@
-#include "struct.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yyan-bin <yyan-bin@student.42kl.edu.my>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/03 17:45:57 by yyan-bin          #+#    #+#             */
+/*   Updated: 2024/12/03 17:46:22 by yyan-bin         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void    ft_lstadd_front(t_list **lst, t_list *new)
+#include "libft.h"
+
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-    if (lst && new)
-    {
-        if (*lst)
-            new->next = *lst;
-        *lst = new;
-    }
+	if (lst && new)
+	{
+		if (*lst)
+			new->next = *lst;
+		*lst = new;
+	}
 }
 
 /*

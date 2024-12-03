@@ -1,26 +1,38 @@
-#include "struct.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yyan-bin <yyan-bin@student.42kl.edu.my>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/03 17:46:50 by yyan-bin          #+#    #+#             */
+/*   Updated: 2024/12/03 17:46:51 by yyan-bin         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-t_list  *ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+#include "libft.h"
+
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-    t_list *new_node;
-    t_list *new_list;
+	t_list	*new_node;
+	t_list	*new_list;
 
-    new_node = NULL;
-    new_list = NULL;
-    if (!lst || !f || !del)
-        return (NULL);
-    while (lst)
-    {
-        new_node = ft_lstnew(f(lst->content));
-        if (!new_node)
-        {
-            ft_lstclear(&new_list, del);
-            return (NULL);
-        }
-        ft_lstadd_back(&new_list, new_node);
-        lst = lst->next;
-    }
-    return (new_list);
+	new_node = NULL;
+	new_list = NULL;
+	if (!lst || !f || !del)
+		return (NULL);
+	while (lst)
+	{
+		new_node = ft_lstnew(f(lst->content));
+		if (!new_node)
+		{
+			ft_lstclear(&new_list, del);
+			return (NULL);
+		}
+		ft_lstadd_back(&new_list, new_node);
+		lst = lst->next;
+	}
+	return (new_list);
 }
 
 /*
