@@ -6,7 +6,7 @@
 /*   By: yyan-bin <yyan-bin@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 19:26:21 by yyan-bin          #+#    #+#             */
-/*   Updated: 2024/10/22 19:26:23 by yyan-bin         ###   ########.fr       */
+/*   Updated: 2025/03/02 17:37:39 by yyan-bin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@
 #  define LEFT_KEY 123
 #  define RIGHT_KEY 124
 # else
-#  include "../lib/minilibx/mlx.h"
-#  include "../lib/minilibx/mlx_int.h"
+#  include "../lib/minilibx-linux/mlx.h"
+#  include "../lib/minilibx-linux/mlx_int.h"
 #  define ESC 65307
 #  define W_KEY 119
 #  define A_KEY 97

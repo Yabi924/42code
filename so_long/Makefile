@@ -9,7 +9,7 @@ else ifeq ($(SYS), Darwin)
 endif
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror #-g3 -fsanitize=address
 
 NAME = so_long
 
@@ -23,7 +23,7 @@ SRC = srcs/main.c \
 
 OBJ = $(SRC:srcs/%.c=srcs/%.o)
 
-MLX_PATH = ./lib/minilibx/
+MLX_PATH = ./lib/minilibx-linux/
 LFT_PATH = ./lib/libft/libft.a
 PF_PATH = ./lib/ft_printf/libftprintf.a
 
@@ -44,7 +44,7 @@ ft:
 	@echo "make libft & ft_printf"
 
 mlx:
-	@make -C ./lib/minilibx --no-print-directory
+	@make -C ./lib/minilibx-linux --no-print-directory
 	@echo "make mlx"
 
 clean:
@@ -66,7 +66,7 @@ fcleanl: fclean
 	@echo "fclean libft.a & ft_printf.a & so_long"
 
 cleanmlx: fcleanl
-	@make clean -C ./lib/minilibx --no-print-directory
+	@make clean -C ./lib/minilibx-linux --no-print-directory
 	@echo "clean mlx.a"
 
 re: fclean all
