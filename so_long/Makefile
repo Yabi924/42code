@@ -35,6 +35,8 @@ all: $(NAME)
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJ)
+	@$(MAKE) mlx --no-print-directory
+	@$(MAKE) ft --no-print-directory
 	@$(CC) $(CFLAGS) $(OBJ) $(LIBS) $(LFLAGS) -o $(NAME)
 	@echo "Hello! $(NAME)"
 
@@ -53,6 +55,7 @@ clean:
 
 fclean: clean
 	@rm -rf $(NAME)
+	@$(MAKE) fcleanl --no-print-directory
 	@echo "clean $(NAME)"
 
 cleanl:
@@ -60,12 +63,10 @@ cleanl:
 	@make clean -C ./lib/ft_printf --no-print-directory
 	@echo "clean obj libft & ft_printf"
 
-fcleanl: fclean
+fcleanl:
 	@make fclean -C ./lib/libft --no-print-directory
 	@make fclean -C ./lib/ft_printf --no-print-directory
 	@echo "fclean libft.a & ft_printf.a & so_long"
-
-cleanmlx: fcleanl
 	@make clean -C ./lib/minilibx-linux --no-print-directory
 	@echo "clean mlx.a"
 
